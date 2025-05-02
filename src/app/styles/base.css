@@ -7,9 +7,12 @@
   --vt-black: #000000;
 
   --vt-blue: #2E70F3;
+  --vt-blue-light: #93b5f9;
   --vt-purple: #B05AD1;
   --vt-purple-light: #AF8AD5;
   --vt-red: #D4333A;
+  --vt-radius: 10px;
+
 }
 
 @media (prefers-color-scheme: dark) {

@@ -18,13 +18,17 @@ const props = defineProps<{
 
 <style>
 .nav-menu {
+  padding-right: 15px;
+  font-size: 18px;
   display: flex;
   justify-content: space-between;
 }
 
 .nav-items {
+  padding-left: 15px;
   width: 45%;
-
+  font-size: 18px;
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
 }
