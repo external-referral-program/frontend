@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { RecommendSection } from '@/widgets/landing/recomment-section'
+import { RecommendSection } from '@/widgets/landing/recommend-section'
 </script>
 
 <style scoped>
