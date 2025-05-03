@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <base-header />
-
     <section class="gradient-block">
       <div class="content">
         <h2 class="title">Добро пожаловать в личный кабинет</h2>
@@ -12,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import BaseHeader from '@/widgets/header/BaseHeader.vue'
 </script>
 
 <style scoped>
