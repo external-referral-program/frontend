@@ -1,6 +1,6 @@
 <template>
   <section class="section-body">
-    <img class="bg-img" src="/src/widgets/landing/recomment-section/assets/bg-lines.svg" alt="" />
+    <img class="bg-img" src="/src/widgets/landing/recomment-section/assets/bg-lines.svg" alt="background img" />
     <div class="section-container">
       <h1 class="section-title">Платим за&nbsp;кандидатов реальные деньги</h1>
       <div class="section-inner">
