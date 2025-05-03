@@ -5,7 +5,7 @@ import { BaseHeader } from '@/widgets/header/index'
 
 <template>
   <base-header />
-  <RouterView />
+  <router-view />
 </template>
 
 <style scoped>
