@@ -9,12 +9,13 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .gradient-block {
-  background: linear-gradient(to right, var(--vt-blue-light), var(--vt-white), var(--vt-blue-light));
+  background: var(--vt-gradient-bg);
+  mask-image: var(--vt-gradient-bg-mask);
+  -webkit-mask-image: var(--vt-gradient-bg-mask);
   padding: 3rem 2rem;
   display: flex;
   justify-content: flex-start;
@@ -31,7 +32,6 @@
   align-items: flex-start;
   height: 100%;
 }
-
 
 .title {
   font-size: 1.8rem;

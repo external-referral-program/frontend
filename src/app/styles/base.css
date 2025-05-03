@@ -13,6 +13,13 @@
   --vt-red: #D4333A;
   --vt-radius: 10px;
 
+  --vt-gradient-bg: linear-gradient(to right,
+      var(--vt-blue-light),
+      var(--vt-white),
+      var(--vt-blue-light));
+  --vt-gradient-bg-mask: linear-gradient(to bottom,
+      rgba(0, 0, 0, 1) 80%,
+      rgba(0, 0, 0, 0) 100%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,4 +66,15 @@ body {
 ul {
   padding: 0;
   list-style-type: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+
+  cursor: pointer;
+
 }
