@@ -1,7 +1,7 @@
 <template>
   <nav class="nav-menu">
     <ul class="nav-items">
-      <li v-for="item in props.menuItems" :key="item.path">{{ item.title }}</li>
+      <li v-for="item in props.menuItems" :key="item.path" class="nav-item">{{ item.title }}</li>
     </ul>
     <!-- можно вынести в компонент -->
     Личный кабинет
@@ -16,20 +16,24 @@ const props = defineProps<{
 }>()
 </script>
 
-<style>
+<style scoped>
 .nav-menu {
-  padding-right: 15px;
-  font-size: 18px;
+  font-size: 23px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+
+  padding: 22px 32px;
+}
+
+.nav-items {
+  width: 40%;
   display: flex;
   justify-content: space-between;
 }
 
-.nav-items {
-  padding-left: 15px;
-  width: 45%;
-  font-size: 18px;
-  font-weight: 500;
-  display: flex;
-  justify-content: space-between;
+.nav-item {
+  font-weight: 600;
 }
 </style>

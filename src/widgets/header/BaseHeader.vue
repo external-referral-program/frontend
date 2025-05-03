@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <nav-menu :menu-items="menuItems"></nav-menu>
   </header>
 </template>
@@ -11,4 +11,10 @@ import { useHeader } from '@/widgets/header/model/useHeader'
 const { menuItems } = useHeader()
 </script>
 
-<style></style>
+<style scoped>
+.header {
+  position: relative;
+  z-index: 50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+</style>
