@@ -1,4 +1,25 @@
 @import '/src/app/styles/base.css';
 
-#app {
+.base-body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 167px 0;
+}
+
+.base-container {
+  max-width: 40%;
+  z-index: 2;
+}
+
+.base-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+  margin-bottom: 50px;
+}
+
+.base-text {
+  font-size: 20px;
 }

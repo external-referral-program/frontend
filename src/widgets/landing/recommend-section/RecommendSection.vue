@@ -1,10 +1,15 @@
 <template>
-  <section class="section-body">
-    <img class="bg-img" loading="lazy" src="/src/widgets/landing/recommend-section/assets/bg-lines.svg" alt="background img" />
-    <div class="section-container">
-      <h1 class="section-title">Платим за&nbsp;кандидатов реальные деньги</h1>
+  <section class="base-body section-body">
+    <img
+      class="bg-img"
+      loading="lazy"
+      src="/src/widgets/landing/recommend-section/assets/bg-lines.svg"
+      alt="background img"
+    />
+    <div class="base-container">
+      <h1 class="base-title">Платим за&nbsp;кандидатов реальные деньги</h1>
       <div class="section-inner">
-        <p class="section-text">
+        <p class="base-text">
           Рекомендуй друзей и получай вознаграждение после&nbsp;прохождения ими испытательного срока
         </p>
         <base-button text="Рекомендовать" color="primary" />
@@ -20,11 +25,6 @@ import { BaseButton } from '@/shared/ui/button'
 <style scoped>
 .section-body {
   position: relative;
-  padding: 167px 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
 
   background: var(--vt-gradient-bg);
   mask-image: var(--vt-gradient-bg-mask);
@@ -42,22 +42,11 @@ import { BaseButton } from '@/shared/ui/button'
   z-index: 1;
 }
 
-.section-container {
-  max-width: 40%;
-  z-index: 2;
-}
-
-.section-title {
+.base-title {
   font-size: 52px;
-  font-weight: 700;
-  line-height: 60px;
-  margin-bottom: 50px;
 }
 
-.section-text {
-  font-size: 20px;
-}
-.section-text {
+.base-text {
   margin-bottom: 108px;
 }
 </style>
