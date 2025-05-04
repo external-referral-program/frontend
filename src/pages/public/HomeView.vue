@@ -2,12 +2,14 @@
   <div class="home-view-body">
     <recommend-section />
     <steps-for-recommend />
+    <people-section />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { RecommendSection } from '@/widgets/landing/recommend-section'
 import { StepsForRecommend } from '@/widgets/landing/steps-for-recommend'
+import { PeopleSection } from '@/widgets/landing/people-section'
 </script>
 
 <style scoped>

@@ -12,7 +12,4 @@ import StepCards from '@/widgets/landing/steps-for-recommend/ui/step-cards/StepC
 </script>
 
 <style scoped>
-.base-body {
-  padding: 30px 0;
-}
 </style>

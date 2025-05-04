@@ -31,6 +31,10 @@ import { BaseButton } from '@/shared/ui/button'
   -webkit-mask-image: var(--vt-gradient-bg-mask);
 }
 
+.base-body {
+  padding: 167px 0;
+}
+
 .bg-img {
   position: absolute;
   top: 145px;
