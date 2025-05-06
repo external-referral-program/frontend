@@ -11,4 +11,9 @@
 import QuestionCards from '@/widgets/landing/asked-questions/ui/question-cards/QuestionCards.vue'
 </script>
 
-<style></style>
+<style scoped>
+.base-body {
+  padding-top: 100px;
+  padding-bottom: 170px;
+}
+</style>

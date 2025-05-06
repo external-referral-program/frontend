@@ -4,6 +4,7 @@
     <steps-for-recommend />
     <people-section />
     <asked-questions />
+    <vacancy-section />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import { RecommendSection } from '@/widgets/landing/recommend-section'
 import { StepsForRecommend } from '@/widgets/landing/steps-for-recommend'
 import { PeopleSection } from '@/widgets/landing/people-section'
 import { AskedQuestions } from '@/widgets/landing/asked-questions'
+import { VacancySection } from '@/widgets/landing/vacancy-section'
 </script>
 
 <style scoped>
