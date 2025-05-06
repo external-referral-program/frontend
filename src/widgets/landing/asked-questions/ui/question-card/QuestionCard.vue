@@ -3,7 +3,7 @@
     <div class="question-card-container">
       <div class="question-card-header">
         <div class="question-card-title">{{ text }}</div>
-        <div class="arrow" :class="{ 'arrow-up': isVisible }"></div>
+        <div class="arrow" :class="computeArrowState"></div>
       </div>
       <transition name="slide">
         <div v-show="isVisible" class="question-card-text">
@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 defineProps<{
   text: string
@@ -23,6 +23,10 @@ defineProps<{
 }>()
 
 const isVisible = ref(false)
+
+const computeArrowState = computed(() => {
+  return isVisible.value ? 'arrow-up' : ''
+})
 </script>
 
 <style>
@@ -58,7 +62,7 @@ const isVisible = ref(false)
 .arrow::after {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 75%;
   left: 0;
   width: 14px;
   height: 1.5px;
