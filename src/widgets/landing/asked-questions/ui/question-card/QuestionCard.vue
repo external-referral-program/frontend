@@ -38,6 +38,7 @@ const computeArrowState = computed(() => {
 
   word-break: keep-all;
   user-select: none;
+  cursor: pointer;
 }
 
 .question-card-container {
