@@ -18,5 +18,6 @@ const { vacancies } = useVacancies()
 .base-body {
   background: var(--vt-purple-light);
   width: 100%;
+  padding: 70px 0 150px;
 }
 </style>
