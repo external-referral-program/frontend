@@ -35,7 +35,7 @@ const { userData, friendData } = useInvite()
 
 <style scoped>
 .base-container {
-  max-width: 55%;
+  max-width: 45%;
 }
 
 .base-subtitle {

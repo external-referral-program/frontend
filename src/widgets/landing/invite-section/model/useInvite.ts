@@ -15,7 +15,7 @@ const userData = ref<Data[]>([
     error: null,
   },
   {
-    label: 'E-mail',
+    label: 'Электронная почта',
     value: '',
     type: 'email',
     error: null,
@@ -36,7 +36,7 @@ const friendData = ref<Data[]>([
     error: null,
   },
   {
-    label: 'E-mail',
+    label: 'Электронная почта',
     value: '',
     type: 'email',
     error: null,
