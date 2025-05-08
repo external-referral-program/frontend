@@ -3,7 +3,7 @@
     <section class="gradient-block">
       <div class="content">
         <h2 class="title">Платим за кандидатов реальные деньги</h2>
-        <button class="action-btn">Рекомендовать</button>
+        <base-button text="Рекомендовать" color="primary" />
       </div>
     </section>
 
@@ -16,15 +16,25 @@
           class="candidate-item"
         >
           <div class="candidate-header" @click="toggleStatus(candidate.id)">
-            <!-- Выделим имя жирным -->
             <span class="candidate-name">{{ candidate.name }}</span>
             <span :class="{ rotated: expandedId === candidate.id }">▼</span>
           </div>
           <p>{{ candidate.status }}</p>
-          <div v-if="expandedId === candidate.id" class="candidate-status">
-            <!-- Статус-бар -->
-            <StatusProgress :current-step="getStatusProgress(candidate.status)" :steps="steps" />
-          </div>
+
+          <transition name="fade-slide" appear>
+            <div
+              v-if="expandedId === candidate.id"
+              class="candidate-status"
+            >
+              <div class="status-wrapper">
+                <StatusProgress
+                  :current-step="getStatusProgress(candidate.status)"
+                  :steps="steps"
+                />
+              </div>
+              <base-button text="Получить награду" color="primary" />
+            </div>
+          </transition>
         </li>
       </ul>
     </section>
@@ -32,8 +42,9 @@
 </template>
 
 <script setup lang="ts">
+import { BaseButton } from '@/shared/ui/button'
 import { ref } from 'vue'
-import { StatusProgress } from '@/widgets/Progress'  // Импортируем компонент
+import StatusProgress from '@/widgets/Progress/StatusProgress.vue'
 
 interface Candidate {
   id: number
@@ -44,7 +55,7 @@ interface Candidate {
 const candidates = ref<Candidate[]>([
   { id: 1, name: 'Суханов Даниил Матвеевич', status: 'Заявка принята' },
   { id: 2, name: 'Суханов Даниил Матвеевич', status: 'Кандидат прошел собеседование' },
-  { id: 3, name: 'Суханов Даниил Матвеевич', status: 'Испытательный срок' }
+  { id: 3, name: 'Суханов Даниил Матвеевич', status: 'Ожидание выплаты' }
 ])
 
 const expandedId = ref<number | null>(null)
@@ -53,7 +64,6 @@ function toggleStatus(id: number) {
   expandedId.value = expandedId.value === id ? null : id
 }
 
-// Список шагов для статуса
 const steps = [
   'Заявка принята',
   'Кандидат прошел собеседование',
@@ -62,10 +72,9 @@ const steps = [
   'Ожидание выплаты'
 ]
 
-// Функция для получения прогресса на основе статуса
 function getStatusProgress(status: string): number {
-  const stepIndex = steps.indexOf(status);
-  return stepIndex >= 0 ? stepIndex + 1 : 0; // Возвращаем номер шага, начиная с 1
+  const stepIndex = steps.indexOf(status)
+  return stepIndex >= 0 ? stepIndex + 1 : 0
 }
 </script>
 
@@ -92,26 +101,13 @@ function getStatusProgress(status: string): number {
 }
 
 .title {
-  font-size: 35px;
+  font-size: 30px;
   line-height: 1.2;
   font-weight: bold;
   color: var(--vt-black);
   margin-bottom: auto;
 }
 
-.action-btn {
-  user-select: none;
-  margin-top: 20px;
-  background-color: var(--vt-blue);
-  color: var(--vt-white);
-  border-radius: var(--vt-radius);
-  border: none;
-  padding: 3px 20px;
-  cursor: pointer;
-  align-self: flex-start;
-}
-
-/* --- Новый блок кандидатов --- */
 .candidates-block {
   padding: 2rem;
 }
@@ -148,11 +144,28 @@ function getStatusProgress(status: string): number {
 
 .candidate-status {
   margin-top: 0.5rem;
-  color: #555;
+  overflow: visible;
+}
+
+.status-wrapper {
+  position: relative;
+  min-height: 200px;
 }
 
 .rotated {
   transform: rotate(180deg);
   transition: transform 0.3s;
+}
+
+/* transition */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s ease;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 </style>
