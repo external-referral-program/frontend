@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ButtonColor } from '@/shared/ui/button/button.types'
+import type { ButtonColor } from '@/shared/ui/button/model/button.types'
 import { computed } from 'vue'
 
 const props = defineProps({

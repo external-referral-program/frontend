@@ -23,6 +23,14 @@
   margin-bottom: 50px;
 }
 
+.base-subtitle {
+  max-width: 60%;
+  margin: 0 auto;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
 .base-text {
   font-size: 20px;
 }

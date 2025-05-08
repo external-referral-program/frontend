@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { BaseButton } from '@/shared/ui/button'
+import { BaseButton } from '@/shared/ui/button/model'
 </script>
 
 <style scoped>

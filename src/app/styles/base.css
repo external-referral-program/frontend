@@ -5,6 +5,7 @@
 :root {
   --vt-white: #ffffff;
   --vt-black: #000000;
+  --vt-black-light: #373737;
 
   --vt-grey: #EBEBEB;
   --vt-blue: #2E70F3;
@@ -77,5 +78,4 @@ button {
   background-color: transparent;
 
   cursor: pointer;
-
 }
