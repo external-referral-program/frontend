@@ -10,11 +10,7 @@
     <section class="candidates-block">
       <h2 class="subtitle">Рекомендованные кандидаты</h2>
       <ul class="candidate-list">
-        <li
-          v-for="candidate in candidates"
-          :key="candidate.id"
-          class="candidate-item"
-        >
+        <li v-for="candidate in candidates" :key="candidate.id" class="candidate-item">
           <div class="candidate-header" @click="toggleStatus(candidate.id)">
             <span class="candidate-name">{{ candidate.name }}</span>
             <span :class="{ rotated: expandedId === candidate.id }">▼</span>
@@ -22,10 +18,7 @@
           <p>{{ candidate.status }}</p>
 
           <transition name="fade-slide" appear>
-            <div
-              v-if="expandedId === candidate.id"
-              class="candidate-status"
-            >
+            <div v-if="expandedId === candidate.id" class="candidate-status">
               <div class="status-wrapper">
                 <StatusProgress
                   :current-step="getStatusProgress(candidate.status)"
@@ -42,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { BaseButton } from '@/shared/ui/button'
+import { BaseButton } from '@/shared/ui/button/index'
 import { ref } from 'vue'
 import StatusProgress from '@/widgets/Progress/StatusProgress.vue'
 
@@ -55,7 +48,7 @@ interface Candidate {
 const candidates = ref<Candidate[]>([
   { id: 1, name: 'Суханов Даниил Матвеевич', status: 'Заявка принята' },
   { id: 2, name: 'Суханов Даниил Матвеевич', status: 'Кандидат прошел собеседование' },
-  { id: 3, name: 'Суханов Даниил Матвеевич', status: 'Ожидание выплаты' }
+  { id: 3, name: 'Суханов Даниил Матвеевич', status: 'Ожидание выплаты' },
 ])
 
 const expandedId = ref<number | null>(null)
@@ -69,7 +62,7 @@ const steps = [
   'Кандидат прошел собеседование',
   'Кандидат назначен на оформление',
   'Испытательный срок',
-  'Ожидание выплаты'
+  'Ожидание выплаты',
 ]
 
 function getStatusProgress(status: string): number {
