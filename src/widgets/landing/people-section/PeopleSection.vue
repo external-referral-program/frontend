@@ -77,5 +77,6 @@
 
 .base-img {
   height: 100%;
+  user-select: none;
 }
 </style>
