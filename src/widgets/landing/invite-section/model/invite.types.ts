@@ -4,5 +4,5 @@ export interface Data {
   label: string
   value: string
   type: InputType
-  error: null
+  error: string | null
 }

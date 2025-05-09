@@ -1,5 +1,5 @@
 <template>
-  <button @click="$emit('click')" class="base-button" :class="computeColor">
+  <button @click="$emit('click')" class="base-button" :class="computeColor" v-bind="$attrs">
     <slot v-if="text" name="text-content">{{ text }}</slot>
 
     <slot v-else></slot>
@@ -36,9 +36,14 @@ const computeColor = computed(() => {
   transition: all 0.1s ease-in-out;
 }
 
-.base-button:active {
+.base-button:not(:disabled):active {
   transform: translateY(1px);
   filter: brightness(90%);
+}
+
+.base-button:disabled {
+  background: var(--vt-grey-dark);
+  cursor: default;
 }
 
 .btn-primary {
