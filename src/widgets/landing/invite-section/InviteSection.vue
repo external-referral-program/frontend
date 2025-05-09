@@ -24,10 +24,10 @@
       </div>
       <div class="agreements">
         <base-checkbox
-          v-for="agreement in agreements"
+          v-for="(agreement, index) in agreements"
           v-model="agreement.value"
           :label="agreement.label"
-          :key="agreement.label"
+          :key="index"
         />
       </div>
       <base-button @click="clickRecommend" :disabled="!isAllAgree" text="Рекомендовать" />
