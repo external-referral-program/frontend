@@ -1,5 +1,5 @@
 <template>
-  <div class="status-progress">
+  <div class="status-progress" :class="{ completed: isCompleted }">
     <div
       v-for="(step, index) in steps"
       :key="index"
@@ -37,8 +37,6 @@ defineProps({
     default: false
   }
 })
-
-
 
 function getStepDescription(index: number): string {
   const descriptions = [
@@ -123,5 +121,13 @@ function getStepDescription(index: number): string {
 .description {
   font-size: 12px;
   color: #888;
+}
+
+.status-progress.completed .dot.completed {
+  background-color: var(--vt-blue);
+}
+
+.status-progress.completed .line.active {
+  background-color: var(--vt-blue);
 }
 </style>
