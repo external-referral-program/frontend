@@ -54,6 +54,12 @@ const computeColor = computed(() => {
   background: var(--vt-purple);
 }
 
+@media (max-width: 768px) {
+  .base-button {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 425px) {
   .base-button {
     font-size: 16px;

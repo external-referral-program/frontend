@@ -96,4 +96,11 @@
     max-width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  .base-recommend {
+    margin-top: 50px;
+    font-size: 24px;
+  }
+}
 </style>
