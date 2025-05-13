@@ -79,4 +79,25 @@ const props = defineProps<{
 .step-card-text {
   font-size: 16px;
 }
+
+@media (max-width: 768px) {
+  .step-card {
+    padding: 20px;
+  }
+
+  .step-card-img {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .step-card {
+    padding: 10px 15px;
+  }
+  .step-card-elements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 </style>

@@ -5,14 +5,14 @@
         <div class="vacancy-card-name">{{ vacancy.name }}</div>
         <div class="vacancy-card-description">{{ vacancy.description }}</div>
       </div>
-      <vacancy-recommend-button />
+      <base-button text="Рекомендовать" color="secondary" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { Vacancy } from '@/entities/vacancy/model/types'
-import VacancyRecommendButton from '@/entities/vacancy/ui/VacancyRecommendButton.vue'
+import { BaseButton } from '@/shared/ui/button'
 
 defineProps<{
   vacancy: Vacancy
@@ -46,5 +46,20 @@ defineProps<{
 
 .vacancy-card-description {
   font-size: 22px;
+}
+
+@media (max-width: 768px) {
+  .vacancy-card-container {
+    padding: 20px 18px;
+    flex-wrap: wrap;
+  }
+
+  .vacancy-card-name {
+    font-size: 18px;
+  }
+
+  .vacancy-card-description {
+    font-size: 15px;
+  }
 }
 </style>

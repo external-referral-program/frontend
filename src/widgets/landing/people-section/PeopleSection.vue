@@ -28,6 +28,9 @@
 <style scoped>
 .base-body {
   padding: 30px 0 0 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(75, 131, 244, 0.685) 100%);
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .base-container {
@@ -37,22 +40,12 @@
   max-width: 100%;
   width: 100%;
   align-items: flex-end;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(75, 131, 244, 0.685) 100%);
-
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
 }
 
 .base-elements {
   flex: 1;
   max-width: 30%;
   padding-bottom: 100px;
-}
-
-.base-container img {
-  flex: 2;
-  max-width: 60%;
-  object-fit: contain;
 }
 
 .base-title {
@@ -78,5 +71,29 @@
 .base-img {
   height: 100%;
   user-select: none;
+
+  flex: 2;
+  max-width: 60%;
+  object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+  .base-container {
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .base-img {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+
+    max-width: 100%;
+  }
+
+  .base-elements {
+    max-width: 100%;
+  }
 }
 </style>

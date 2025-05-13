@@ -29,7 +29,7 @@ const STEP_CARDS = [
 <style>
 .step-cards {
   display: grid;
-  grid-template-columns: repeat(1, minmax(300px, 1fr));
+  grid-template-columns: repeat(1, minmax(200px, 1fr));
   grid-auto-rows: 1fr;
   gap: 30px;
 }

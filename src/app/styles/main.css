@@ -34,3 +34,32 @@
 .base-text {
   font-size: 20px;
 }
+
+@media (max-width: 1024px) {
+  .base-container {
+    max-width: 90%;
+  }
+
+  .base-title {
+    max-width: 90%;
+    font-size: 36px;
+  }
+
+  .base-text {
+    font-size: 18px;
+
+  }
+
+}
+
+@media(max-width: 768px) {
+  .base-title {
+    font-size: 32px;
+  }
+}
+
+@media(max-width: 425px) {
+  .base-title {
+    font-size: 28px;
+  }
+}

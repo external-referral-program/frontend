@@ -53,4 +53,17 @@ import { BaseButton } from '@/shared/ui/button'
 .base-text {
   margin-bottom: 108px;
 }
+
+@media (max-width: 1024px) {
+  .base-title {
+    max-width: 90%;
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .base-title {
+    font-size: 32px;
+  }
+}
 </style>

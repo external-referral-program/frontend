@@ -49,6 +49,12 @@ const { userData, friendData, agreements, isAllAgree, clickRecommend } = useInvi
   max-width: 45%;
 }
 
+@media (max-width: 1024px) {
+  .base-container {
+    max-width: 90%;
+  }
+}
+
 .base-subtitle {
   margin-top: 20px;
 }

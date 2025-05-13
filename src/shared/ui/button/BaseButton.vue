@@ -53,4 +53,10 @@ const computeColor = computed(() => {
 .btn-secondary {
   background: var(--vt-purple);
 }
+
+@media (max-width: 425px) {
+  .base-button {
+    font-size: 16px;
+  }
+}
 </style>

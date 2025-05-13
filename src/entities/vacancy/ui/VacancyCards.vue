@@ -41,4 +41,13 @@ defineProps<{
   background: #fff;
   border-radius: 20px;
 }
+
+@media (max-width: 768px) {
+  .vacancy-cards {
+    padding: 0 8px;
+  }
+
+  .vacancy-cards::-webkit-scrollbar {
+  }
+}
 </style>

@@ -1,6 +1,8 @@
 import { computed, ref } from 'vue'
 import type { Data } from '@/widgets/landing/invite-section/model/invite.types'
 
+// todo убрать userdata
+
 const userData = ref<Data[]>([
   {
     label: 'ФИО',
@@ -91,3 +93,5 @@ const clickRecommend = () => {
 export const useInvite = () => {
   return { userData, friendData, agreements, isAllAgree, clickRecommend }
 }
+
+// todo: города, вакансии с бэка
