@@ -13,7 +13,12 @@ const { menuItems, lastItem } = useHeader()
 
 <style scoped>
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 50;
+  background: var(--vt-white);
 }
 </style>
