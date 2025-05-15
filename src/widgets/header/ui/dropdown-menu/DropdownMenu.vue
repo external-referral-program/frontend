@@ -1,15 +1,17 @@
 <template>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu" v-click-outside="dropdownClose">
     <base-button @click="isOpen = !isOpen" :text="item.title" :rounded />
     <transition name="dropdown">
-      <ul v-show="isOpen" class="dropdown-items">
+      <ul v-show="isOpen"  class="dropdown-items">
         <li
           @click="isOpen = false"
           class="dropdown-item"
           v-for="subItem in item.elements"
           :key="subItem.path"
         >
-          <router-link class="dropdown-link" :to="subItem.path"> {{ subItem.title }} </router-link>
+          <router-link exact-active-class="active" class="dropdown-link" :to="subItem.path">
+            {{ subItem.title }}
+          </router-link>
         </li>
       </ul>
     </transition>
@@ -29,9 +31,13 @@ defineProps<{
 const rounded = 10
 
 const isOpen = ref(false)
+
+const dropdownClose = () => {
+  isOpen.value = false
+}
 </script>
 
-<style>
+<style scoped>
 .dropdown-menu {
   position: relative;
   display: inline-block;
@@ -64,6 +70,10 @@ const isOpen = ref(false)
   color: var(--vt-white);
   min-width: 100%;
   padding: 7px 0;
+}
+
+.dropdown-link.active {
+  color: var(--vt-black-light);
 }
 
 /* Анимация */

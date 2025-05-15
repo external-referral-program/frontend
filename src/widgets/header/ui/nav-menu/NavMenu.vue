@@ -3,8 +3,6 @@
     <ul class="nav-items">
       <li v-for="item in props.menuItems" :key="item.path" class="nav-item">{{ item.title }}</li>
     </ul>
-    <!-- todo здесь будет выпадающее меню -->
-    <!-- <router-link :to="lastItemPath.path" class="nav-item"> {{ lastItem.title }} </router-link> -->
     <dropdown-menu :item="lastItem" />
   </nav>
 </template>
