@@ -3,9 +3,9 @@
     <recommend-section />
     <steps-for-recommend />
     <people-section />
-    <asked-questions />
-    <vacancy-section />
-    <invite-section />
+    <asked-questions :id="SECTION_IDS.QUESTIONS" />
+    <vacancy-section :id="SECTION_IDS.VACANCIES" />
+    <invite-section :id="SECTION_IDS.RECOMMEND" />
   </div>
 </template>
 
@@ -16,6 +16,8 @@ import { PeopleSection } from '@/widgets/landing/people-section'
 import { AskedQuestions } from '@/widgets/landing/asked-questions'
 import { VacancySection } from '@/widgets/landing/vacancy-section'
 import { InviteSection } from '@/widgets/landing/invite-section'
+
+import { SECTION_IDS } from '@/shared/ui/sections/sectionIds'
 </script>
 
 <style scoped>

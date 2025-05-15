@@ -1,9 +1,10 @@
 export interface IMenuItem {
   title: string
   path: string
+  id: string
 }
 
 export interface ILastItem {
   title: string
-  elements: Array<IMenuItem>
+  elements: Array<{ title: string; path: string }>
 }

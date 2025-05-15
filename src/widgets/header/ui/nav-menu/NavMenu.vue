@@ -1,7 +1,9 @@
 <template>
   <nav class="nav-menu">
     <ul class="nav-items">
-      <li v-for="item in props.menuItems" :key="item.path" class="nav-item">{{ item.title }}</li>
+      <li v-for="item in props.menuItems" :key="item.path" class="nav-item">
+        <router-link :to="item.path + '#'+ item.id">{{ item.title }}</router-link>
+      </li>
     </ul>
     <dropdown-menu :item="lastItem" />
   </nav>
