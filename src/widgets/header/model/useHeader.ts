@@ -1,4 +1,4 @@
-import type { IMenuItem } from '@/widgets/header/ui/nav-menu/navMenu.types'
+import type { IMenuItem, ILastItem } from '@/widgets/header/ui/nav-menu/navMenu.types'
 
 const menuItems: Array<IMenuItem> = [
   {
@@ -15,9 +15,18 @@ const menuItems: Array<IMenuItem> = [
   },
 ]
 
-const lastItem: IMenuItem = {
+const lastItem: ILastItem = {
   title: 'Личный кабинет',
-  path: '/account',
+  elements: [
+    {
+      title: 'Прогресс',
+      path: '/account/progress',
+    },
+    {
+      title: 'Настройки',
+      path: '/account/settings',
+    },
+  ],
 }
 
 export const useHeader = () => {

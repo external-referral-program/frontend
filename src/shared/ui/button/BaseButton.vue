@@ -1,5 +1,11 @@
 <template>
-  <button @click="$emit('click')" class="base-button" :class="computeColor" v-bind="$attrs">
+  <button
+    @click="$emit('click')"
+    class="base-button"
+    :class="computeColor"
+    :style="computeRounded"
+    v-bind="$attrs"
+  >
     <slot v-if="text" name="text-content">{{ text }}</slot>
 
     <slot v-else></slot>
@@ -7,14 +13,18 @@
 </template>
 
 <script lang="ts" setup>
-import type { ButtonColor } from '@/shared/ui/button/model/button.types'
 import { computed } from 'vue'
+import type { ButtonColor } from '@/shared/ui/button/model/button.types'
 
 const props = defineProps({
   text: String,
   color: {
     type: String as () => ButtonColor,
     default: 'primary',
+  },
+  rounded: {
+    type: Number,
+    default: 20,
   },
 })
 
@@ -23,12 +33,17 @@ defineEmits(['click'])
 const computeColor = computed(() => {
   return `btn-${props.color}`
 })
+
+const computeRounded = computed(() => {
+  return {
+    'border-radius': `${props.rounded}px`,
+  }
+})
 </script>
 
 <style scoped>
 .base-button {
   font-size: 23px;
-  border-radius: 20px;
   color: var(--vt-white);
   padding: 5px 29px;
   user-select: none;
