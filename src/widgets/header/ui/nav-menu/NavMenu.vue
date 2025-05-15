@@ -3,15 +3,19 @@
     <ul class="nav-items">
       <li v-for="item in props.menuItems" :key="item.path" class="nav-item">{{ item.title }}</li>
     </ul>
-    Личный кабинет
+<!-- todo здесь будет выпадающее меню -->
+    <!-- <router-link :to="lastItemPath.path" class="nav-item"> {{ lastItem.title }} </router-link> -->
+     {{ lastItem.title }}
   </nav>
 </template>
 
 <script lang="ts" setup>
-import type { IMenuItems } from '@/widgets/header/ui/nav-menu/navMenu.types'
+import { RouterLink } from 'vue-router'
+import type { IMenuItem } from '@/widgets/header/ui/nav-menu/navMenu.types'
 
 const props = defineProps<{
-  menuItems: Array<IMenuItems>
+  menuItems: Array<IMenuItem>
+  lastItem: IMenuItem
 }>()
 
 // todo дописать бургер-меню
@@ -39,6 +43,8 @@ const props = defineProps<{
 
 .nav-item {
   font-weight: 600;
+  text-decoration: none;
+  color: var(--vt-black)
 }
 
 @media (max-width: 768px) {

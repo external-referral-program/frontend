@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <nav-menu :menu-items="menuItems"></nav-menu>
+    <nav-menu :menu-items :lastItem></nav-menu>
   </header>
 </template>
 
@@ -8,7 +8,7 @@
 import NavMenu from '@/widgets/header/ui/nav-menu/NavMenu.vue'
 import { useHeader } from '@/widgets/header/model/useHeader'
 
-const { menuItems } = useHeader()
+const { menuItems, lastItem } = useHeader()
 </script>
 
 <style scoped>

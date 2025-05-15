@@ -1,6 +1,6 @@
-import { computed } from 'vue'
+import type { IMenuItem } from '@/widgets/header/ui/nav-menu/navMenu.types'
 
-const MENU_ITEMS = [
+const menuItems: Array<IMenuItem> = [
   {
     title: 'Вопросы',
     path: '/',
@@ -15,10 +15,14 @@ const MENU_ITEMS = [
   },
 ]
 
-export const useHeader = () => {
-  const menuItems = computed(() => MENU_ITEMS)
+const lastItem: IMenuItem = {
+  title: 'Личный кабинет',
+  path: '/account',
+}
 
+export const useHeader = () => {
   return {
     menuItems,
+    lastItem,
   }
 }
