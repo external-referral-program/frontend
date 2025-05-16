@@ -6,6 +6,7 @@
   --vt-white: #ffffff;
   --vt-black: #000000;
   --vt-black-light: #373737;
+  --vt-bg-black-transparent: rgba(0, 0, 0, 0.5);
 
   --vt-grey-dark: #ccc;
   --vt-grey: #EBEBEB;
@@ -15,6 +16,7 @@
   --vt-purple-light: #AF8AD5;
   --vt-red: #D4333A;
   --vt-radius: 10px;
+
 
   --vt-gradient-bg: linear-gradient(to right,
       var(--vt-blue-light),
