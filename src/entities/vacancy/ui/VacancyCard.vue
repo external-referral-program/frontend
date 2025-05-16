@@ -2,8 +2,8 @@
   <div class="vacancy-card">
     <div class="vacancy-card-container">
       <div class="vacancy-card-text">
-        <div class="vacancy-card-name">{{ vacancy.name }}</div>
-        <div class="vacancy-card-description">{{ vacancy.description }}</div>
+        <div class="vacancy-card-name">{{ vacancy.vacancy_name }}</div>
+        <div class="vacancy-card-description">{{ vacancy.requirements }}</div>
       </div>
       <base-button text="Рекомендовать" color="secondary" />
     </div>
@@ -11,11 +11,11 @@
 </template>
 
 <script lang="ts" setup>
-import type { Vacancy } from '@/entities/vacancy/model/types'
+import type { IVacancy } from '@/entities/vacancy/model/types'
 import { BaseButton } from '@/shared/ui/button'
 
 defineProps<{
-  vacancy: Vacancy
+  vacancy: IVacancy
 }>()
 </script>
 

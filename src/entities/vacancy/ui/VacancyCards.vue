@@ -1,16 +1,15 @@
 <template>
   <div class="vacancy-cards">
-    <!-- TODO желательно заменить в будущем :key -->
-    <vacancy-card v-for="vacancy in vacancies" :key="vacancy.name" :vacancy="vacancy" />
+    <vacancy-card v-for="vacancy in vacancies" :key="vacancy.id" :vacancy="vacancy" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import VacancyCard from '@/entities/vacancy/ui/VacancyCard.vue'
-import type { Vacancy } from '@/entities/vacancy/model/types'
+import type { IVacancy } from '@/entities/vacancy/model/types'
 
 defineProps<{
-  vacancies: Array<Vacancy>
+  vacancies: Array<IVacancy>
 }>()
 </script>
 

@@ -2,16 +2,20 @@
   <section class="base-body">
     <div class="base-container">
       <div class="base-title">Вакансии</div>
-      <vacancy-cards :vacancies="vacancies" />
+      <base-loader v-if="loading" color="white" />
+      <div v-else-if="error">Ошибка: {{ error.message }}</div>
+
+      <vacancy-cards v-else :vacancies="list" />
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
 import VacancyCards from '@/entities/vacancy/ui/VacancyCards.vue'
-import { useVacancies } from '@/widgets/landing/vacancy-section/model/useVacancies'
+import { useVacancies } from '@/features/vacancy/useVacancies'
+import { BaseLoader } from '@/shared/ui/loader'
 
-const { vacancies } = useVacancies()
+const { list, loading, error } = useVacancies()
 </script>
 
 <style scoped>
