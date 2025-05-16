@@ -1,4 +1,3 @@
-// Пример интерфейса, нужно дополнить в дальнейшем
 export interface IVacancy {
   id: number
   vacancy_name: string

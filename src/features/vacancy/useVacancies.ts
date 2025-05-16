@@ -13,7 +13,6 @@ export const useVacancies = () => {
       list.value = await fetchVacancies()
     } catch (e) {
       error.value = e as Error
-      console.log(error.value)
     } finally {
       loading.value = false
     }

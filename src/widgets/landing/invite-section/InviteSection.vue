@@ -2,16 +2,6 @@
   <section class="base-body">
     <div class="base-container">
       <h2 class="base-title">Пригласить друга</h2>
-      <h3 class="base-subtitle">Ваши контактные данные</h3>
-      <div class="data-inputs">
-        <base-input
-          v-for="(data, index) in userData"
-          v-model="data.value"
-          :type="data.type"
-          :label="data.label"
-          :key="index"
-        />
-      </div>
       <h3 class="base-subtitle">Контактные данные друга</h3>
       <div class="data-inputs">
         <base-input
@@ -41,7 +31,7 @@ import { BaseCheckbox } from '@/shared/ui/checkbox'
 import { BaseButton } from '@/shared/ui/button'
 import { useInvite } from '@/widgets/landing/invite-section/model/useInvite'
 
-const { userData, friendData, agreements, isAllAgree, clickRecommend } = useInvite()
+const { friendData, agreements, isAllAgree, clickRecommend } = useInvite()
 </script>
 
 <style scoped>

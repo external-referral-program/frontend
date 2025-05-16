@@ -1,29 +1,6 @@
 import { computed, ref } from 'vue'
 import type { Data } from '@/widgets/landing/invite-section/model/invite.types'
 
-// todo убрать userdata
-
-const userData = ref<Data[]>([
-  {
-    label: 'ФИО',
-    value: '',
-    type: 'text',
-    error: null,
-  },
-  {
-    label: 'Номер телефона',
-    value: '',
-    type: 'tel',
-    error: null,
-  },
-  {
-    label: 'Электронная почта',
-    value: '',
-    type: 'email',
-    error: null,
-  },
-])
-
 const friendData = ref<Data[]>([
   {
     label: 'ФИО',
@@ -46,7 +23,7 @@ const friendData = ref<Data[]>([
   {
     label: 'Город',
     value: '',
-    type: 'text',
+    type: 'select',
     error: null,
   },
   {
@@ -91,7 +68,7 @@ const clickRecommend = () => {
 }
 
 export const useInvite = () => {
-  return { userData, friendData, agreements, isAllAgree, clickRecommend }
+  return { friendData, agreements, isAllAgree, clickRecommend }
 }
 
 // todo: города, вакансии с бэка
