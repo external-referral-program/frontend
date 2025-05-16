@@ -6,14 +6,15 @@
         v-for="candidate in candidates"
         :key="candidate.id"
         class="candidate-item"
+        @click="toggleStatus(candidate.id)"
       >
-        <div class="candidate-header" @click="toggleStatus(candidate.id)">
+        <div class="candidate-header" >
           <span class="candidate-name">{{ candidate.name }}</span>
           <span :class="{ rotated: expandedId === candidate.id }">▼</span>
         </div>
         <p>{{ candidate.status }}</p>
 
-        <transition name="fade-slide" appear>
+        <transition name="fade-slide" appear @click.stop>
           <div v-if="expandedId === candidate.id" class="candidate-status">
             <div class="status-wrapper">
               <StatusProgress

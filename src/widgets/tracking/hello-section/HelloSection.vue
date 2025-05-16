@@ -1,8 +1,8 @@
 <template>
   <section class="gradient-block">
     <div class="content">
-      <h2 class="title">Платим за кандидатов реальные деньги</h2>
-      <base-button text="Рекомендовать" color="primary" />
+      <h2 class="title">Добро пожаловать в личный кабинет</h2>
+      <base-button text="Настройки" color="primary" />
     </div>
   </section>
 </template>
@@ -31,6 +31,7 @@ import { BaseButton } from '@/shared/ui/button'
   justify-content: space-between;
   align-items: flex-start;
   height: 100%;
+  gap: 15px;
 }
 
 .title {
