@@ -22,7 +22,7 @@ defineProps<{
 <style>
 .vacancy-card {
   background: var(--vt-white);
-  border-radius: 40px;
+  border-radius: 25px;
 }
 
 .vacancy-card-container {

@@ -32,7 +32,7 @@ const computeArrowState = computed(() => {
 <style>
 .question-card {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 40px;
+  border-radius: 25px;
   text-align: left;
   padding: 15px 27px;
 

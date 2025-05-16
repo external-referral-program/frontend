@@ -59,6 +59,7 @@ const closeMenu = () => {
   font-size: 23px;
   font-weight: 600;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   user-select: none;
 
@@ -130,7 +131,7 @@ const closeMenu = () => {
 
 .mobile-menu {
   background: var(--vt-white);
-  border-radius: 8px;
+  border-radius: 25px;
   width: 80%;
   max-width: 300px;
   box-sizing: border-box;
