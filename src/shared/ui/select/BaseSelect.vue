@@ -2,7 +2,7 @@
   <div v-click-outside="close" class="custom-select" ref="wrapper" @click="toggle">
     <div class="select-trigger" :class="{ open: isOpen }">
       <span class="selected-value">{{ displayValue }}</span>
-      <span class="arrow"></span>
+      <base-arrow :is-down="isOpen" />
     </div>
 
     <transition name="fade-slide">
@@ -33,6 +33,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
+import { BaseArrow } from '@/shared/ui/arrow'
 
 const props = defineProps<{
   label: string
@@ -123,7 +124,6 @@ watch(
 .option-item[aria-selected='true'] {
   background: var(--vt-grey);
   color: var(--vt-blue);
-
 }
 
 .option-item:hover {
