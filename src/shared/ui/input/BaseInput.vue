@@ -37,7 +37,10 @@ const emit = defineEmits<{
 
 const internalValue = computed({
   get: () => props.modelValue,
-  set: (val) => emit('update:modelValue', val),
+  set: (val) => {
+    emit('update:modelValue', val)
+    console.log(val)
+  },
 })
 
 const isFocused = ref(false)

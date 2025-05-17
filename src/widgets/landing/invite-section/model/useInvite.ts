@@ -1,7 +1,11 @@
 import { computed, ref } from 'vue'
-import type { Data } from '@/widgets/landing/invite-section/model/invite.types'
+import type {
+  ICityData,
+  IInputData,
+  IVacancyData,
+} from '@/widgets/landing/invite-section/model/invite.types'
 
-const friendData = ref<Data[]>([
+const friendInputData = ref<IInputData[]>([
   {
     label: 'ФИО',
     value: '',
@@ -21,24 +25,26 @@ const friendData = ref<Data[]>([
     error: null,
   },
   {
-    label: 'Город',
-    value: '',
-    type: 'select',
-    error: null,
-  },
-  {
-    label: 'Вакансия',
-    value: '',
-    type: 'text',
-    error: null,
-  },
-  {
     label: 'Ссылка на резюме',
     value: '',
     type: 'text',
     error: null,
   },
 ])
+
+const friendCityData = ref<ICityData>({
+  label: 'Город',
+  value: '',
+  error: null,
+  data: null,
+})
+
+const friendVacancyData = ref<IVacancyData>({
+  label: 'Вакансия',
+  value: '',
+  error: null,
+  data: null,
+})
 
 const agreements = ref([
   {
@@ -68,7 +74,14 @@ const clickRecommend = () => {
 }
 
 export const useInvite = () => {
-  return { friendData, agreements, isAllAgree, clickRecommend }
+  return {
+    friendInputData,
+    friendCityData,
+    friendVacancyData,
+    agreements,
+    isAllAgree,
+    clickRecommend,
+  }
 }
 
 // todo: города, вакансии с бэка
