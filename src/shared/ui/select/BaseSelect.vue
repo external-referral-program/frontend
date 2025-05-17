@@ -28,11 +28,12 @@ const selected = computed<string>({
 
 <style scoped>
 .base-select {
-  padding: 0.5rem;
-  border: 1px solid var(--vt-grey);
-  border-radius: 0.25rem;
-  font-size: 1rem;
+  padding: 8px;
+  border-bottom: 1px solid var(--vt-grey);
+  border-radius: 6px;
+  font-size: 24px;
   background: var(--vt-white);
   appearance: none;
+  outline: none;
 }
 </style>

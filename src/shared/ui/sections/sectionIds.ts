@@ -1,4 +1,4 @@
-const baseRoute = '/'
+export const baseRoute = '/'
 
 export const SECTION_IDS = {
   QUESTIONS: 'questions',

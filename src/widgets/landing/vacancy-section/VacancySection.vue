@@ -3,7 +3,8 @@
     <div class="base-container">
       <div class="base-title">Вакансии</div>
       <base-loader v-if="loading" color="white" />
-      <div v-else-if="error">Ошибка: {{ error.message }}</div>
+      <!-- todo сделать корректный выводи ошибки через message -->
+      <div v-else-if="error">Ошибка: {{ error }}</div>
 
       <vacancy-cards v-else :vacancies="list" />
     </div>
@@ -11,11 +12,15 @@
 </template>
 
 <script lang="ts" setup>
+import { useVacancyStore } from '@/entities/vacancy/model/store'
+import { storeToRefs } from 'pinia'
+
 import VacancyCards from '@/entities/vacancy/ui/VacancyCards.vue'
-import { useVacancies } from '@/features/vacancy/useVacancies'
 import { BaseLoader } from '@/shared/ui/loader'
 
-const { list, loading, error } = useVacancies()
+const useCityStore = useVacancyStore()
+
+const { list, loading, error } = storeToRefs(useCityStore)
 </script>
 
 <style scoped>

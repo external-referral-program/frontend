@@ -6,7 +6,7 @@
           <div class="vacancy-card-name">{{ vacancy.vacancy_name }}</div>
           <div class="vacancy-card-description">{{ vacancy.requirements }}</div>
         </div>
-        <base-button text="Рекомендовать" color="secondary" />
+        <base-button @click="recommendVacancy" text="Рекомендовать" color="secondary" />
       </div>
       <base-arrow :is-down="isOpen" />
     </div>
@@ -25,17 +25,30 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import type { IVacancy } from '@/entities/vacancy/model/types'
 import { BaseButton } from '@/shared/ui/button'
 import { BaseArrow } from '@/shared/ui/arrow'
+import { baseRoute, SECTION_IDS } from '@/shared/ui/sections/sectionIds'
+import { useInvite } from '@/widgets/landing/invite-section/model/useInvite'
 
-defineProps<{
+const router = useRouter()
+
+const { friendVacancyData } = useInvite()
+
+const props = defineProps<{
   vacancy: IVacancy
 }>()
 
 const isOpen = ref(false)
 const toggleOpen = () => {
   isOpen.value = !isOpen.value
+}
+
+const recommendVacancy = () => {
+  router.push({ path: baseRoute, hash: '#' + SECTION_IDS.RECOMMEND })
+
+  friendVacancyData.value.value = props.vacancy.vacancy_name
 }
 </script>
 
