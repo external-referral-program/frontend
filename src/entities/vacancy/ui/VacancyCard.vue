@@ -43,13 +43,13 @@ const toggleOpen = () => {
 .vacancy-card {
   background: var(--vt-white);
   border-radius: 25px;
+  padding: 35px 38px;
   cursor: pointer;
 }
 
 .vacancy-card-container {
   box-sizing: border-box;
   width: 100%;
-  padding: 35px 38px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,7 +77,8 @@ const toggleOpen = () => {
 }
 
 .vacancy-card-details {
-  padding: 0 38px 35px 38px;
+  padding: 0 38px 5px 38px;
+  margin-top: 8px;
   font-size: 24px;
   line-height: 1.5;
   text-align: left;
@@ -109,6 +110,10 @@ const toggleOpen = () => {
 }
 
 @media (max-width: 768px) {
+  .vacancy-card {
+    padding: 10px 8px;
+  }
+
   .vacancy-card-container {
     padding: 20px 18px;
     flex-wrap: wrap;
