@@ -12,13 +12,18 @@
         <p class="base-text">
           Рекомендуй друзей и получай вознаграждение после&nbsp;прохождения ими испытательного срока
         </p>
-        <base-button text="Рекомендовать" color="primary" />
+
+        <router-link :to="SECTION_PATHS.RECOMMEND">
+          <base-button text="Рекомендовать" color="primary" />
+        </router-link>
       </div>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
+import { RouterLink } from 'vue-router'
+import { SECTION_PATHS } from '@/shared/ui/sections/sectionIds'
 import { BaseButton } from '@/shared/ui/button'
 </script>
 

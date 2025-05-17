@@ -1,21 +1,18 @@
 import type { IMenuItem, ILastItem } from '@/widgets/header/ui/nav-menu/navMenu.types'
-import { SECTION_IDS } from '@/shared/ui/sections/sectionIds'
+import { SECTION_PATHS } from '@/shared/ui/sections/sectionIds'
 
 const menuItems: Array<IMenuItem> = [
   {
     title: 'Вопросы',
-    path: '/',
-    id: SECTION_IDS.QUESTIONS,
+    path: SECTION_PATHS.QUESTIONS,
   },
   {
     title: 'Вакансии',
-    path: '/',
-    id: SECTION_IDS.VACANCIES,
+    path: SECTION_PATHS.VACANCIES,
   },
   {
-    title: 'Рекомендовать другу',
-    path: '/',
-    id: SECTION_IDS.RECOMMEND,
+    title: 'Рекомендовать друга',
+    path: SECTION_PATHS.RECOMMEND,
   },
 ]
 

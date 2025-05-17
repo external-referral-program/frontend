@@ -13,7 +13,7 @@
     <!-- Desktop menu -->
     <ul class="nav-items">
       <li v-for="item in props.menuItems" :key="item.path" class="nav-item">
-        <router-link class="nav-link" :to="item.path + '#' + item.id">{{ item.title }}</router-link>
+        <router-link class="nav-link" :to="item.path">{{ item.title }}</router-link>
       </li>
     </ul>
     <dropdown-menu :item="lastItem" />
@@ -23,7 +23,7 @@
       <div v-if="isOpen" class="mobile-menu-overlay" @click.self="closeMenu">
         <ul class="mobile-menu">
           <li v-for="item in menuItems" :key="item.path" class="mobile-item" @click="closeMenu">
-            <router-link class="mobile-link" :to="item.path + '#' + item.id">
+            <router-link class="mobile-link" :to="item.path ">
               {{ item.title }}
             </router-link>
           </li>
