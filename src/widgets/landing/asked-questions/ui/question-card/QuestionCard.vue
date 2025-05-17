@@ -3,7 +3,7 @@
     <div class="question-card-container">
       <div class="question-card-header">
         <div class="question-card-title">{{ text }}</div>
-        <div class="arrow" :class="computeArrowState"></div>
+        <base-arrow :is-down="isVisible" />
       </div>
       <transition name="slide">
         <div v-show="isVisible" class="question-card-text">
@@ -15,7 +15,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
+import { BaseArrow } from '@/shared/ui/arrow'
 
 defineProps<{
   text: string
@@ -23,13 +24,9 @@ defineProps<{
 }>()
 
 const isVisible = ref(false)
-
-const computeArrowState = computed(() => {
-  return isVisible.value ? 'arrow-up' : ''
-})
 </script>
 
-<style>
+<style scoped>
 .question-card {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
@@ -49,41 +46,6 @@ const computeArrowState = computed(() => {
   justify-content: space-between;
   align-items: center;
   gap: 15px;
-}
-
-.arrow {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-
-.arrow::before,
-.arrow::after {
-  content: '';
-  position: absolute;
-  top: 75%;
-  left: 0;
-  width: 14px;
-  height: 1.5px;
-  background: var(--vt-black);
-  transition: all 0.3s ease;
-  border-radius: 1px;
-}
-
-.arrow::before {
-  transform: translate(-2px, -50%) rotate(35deg);
-  transform-origin: right center;
-}
-
-.arrow::after {
-  transform: translate(11px, -50%) rotate(-35deg);
-  transform-origin: left center;
-}
-
-.arrow-up {
-  transform: rotate(180deg);
 }
 
 .question-card-title {

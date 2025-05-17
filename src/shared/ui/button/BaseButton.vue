@@ -1,6 +1,6 @@
 <template>
   <button
-    @click="$emit('click')"
+    @click.stop="$emit('click')"
     class="base-button"
     :class="computeColor"
     :style="computeRounded"
