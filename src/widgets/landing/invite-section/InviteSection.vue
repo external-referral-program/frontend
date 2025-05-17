@@ -40,7 +40,7 @@ import { storeToRefs } from 'pinia'
 import { useCityStore } from '@/entities/city/model/store'
 import { useVacancyStore } from '@/entities/vacancy/model/store'
 
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 
 import { BaseInput } from '@/shared/ui/input/index'
 import { BaseSelect } from '@/shared/ui/select'
@@ -76,6 +76,29 @@ const vacancyNames = computed(() => {
   }
   return vacancies.value.map((vacancy) => vacancy.vacancy_name)
 })
+
+watch(
+  () => friendVacancyData.value.value,
+  () => {
+    if (friendVacancyData.value.value) {
+      const selectedVacancy = vacancies.value.find(
+        (vacancy) => vacancy.vacancy_name === friendVacancyData.value.value,
+      )
+      if (selectedVacancy) {
+        friendCityData.value.value = selectedVacancy.city.city_name
+      }
+    }
+  },
+)
+
+watch(
+  () => friendCityData.value.value,
+  () => {
+    if (!friendCityData.value.value) {
+      friendVacancyData.value.value = ''
+    }
+  },
+)
 </script>
 
 <style scoped>

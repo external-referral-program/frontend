@@ -67,6 +67,14 @@ watch(
     select('')
   },
 )
+
+watch(
+  () => props.modelValue,
+  (newModelValue) => {
+    if (props.options.includes(newModelValue)) return
+    select('')
+  },
+)
 </script>
 
 <style scoped>

@@ -34,7 +34,7 @@ import { useInvite } from '@/widgets/landing/invite-section/model/useInvite'
 
 const router = useRouter()
 
-const { friendVacancyData } = useInvite()
+const { friendVacancyData, friendCityData } = useInvite()
 
 const props = defineProps<{
   vacancy: IVacancy
@@ -47,6 +47,8 @@ const toggleOpen = () => {
 
 const recommendVacancy = () => {
   router.push({ path: baseRoute, hash: '#' + SECTION_IDS.RECOMMEND })
+
+  // friendCityData.value.value = props.vacancy.city.city_name
 
   friendVacancyData.value.value = props.vacancy.vacancy_name
 }
