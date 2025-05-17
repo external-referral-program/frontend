@@ -33,14 +33,14 @@ const friendInputData = ref<IInputData[]>([
 ])
 
 const friendCityData = ref<ICityData>({
-  label: 'Город',
+  label: 'Город (Не выбрано)',
   value: '',
   error: null,
   data: null,
 })
 
 const friendVacancyData = ref<IVacancyData>({
-  label: 'Вакансия',
+  label: 'Вакансия (Не выбрано)',
   value: '',
   error: null,
   data: null,
