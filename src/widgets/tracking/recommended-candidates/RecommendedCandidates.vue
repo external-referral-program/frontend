@@ -6,6 +6,7 @@
         v-for="candidate in candidates"
         :key="candidate.id"
         class="candidate-item"
+        :class="{ expanded: expandedId === candidate.id }"
         @click="toggleStatus(candidate.id)"
       >
         <div class="candidate-header" >
@@ -64,11 +65,11 @@ const steps = [
   'Ожидание выплаты',
 ]
 
-function toggleStatus(id: number) {
+const toggleStatus = (id: number): void => {
   expandedId.value = expandedId.value === id ? null : id
 }
 
-function getStatusProgress(status: string): number {
+const getStatusProgress = (status: string): number => {
   const stepIndex = steps.indexOf(status)
   return stepIndex >= 0 ? stepIndex + 1 : 0
 }
@@ -96,12 +97,16 @@ function getStatusProgress(status: string): number {
   margin-bottom: 1rem;
   border-radius: var(--vt-radius);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.candidate-item.expanded {
+  cursor: default;
 }
 
 .candidate-header {
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
   font-weight: 500;
 }
 
