@@ -48,8 +48,6 @@ const toggleOpen = () => {
 const recommendVacancy = () => {
   router.push({ path: baseRoute, hash: '#' + SECTION_IDS.RECOMMEND })
 
-  // friendCityData.value.value = props.vacancy.city.city_name
-
   friendVacancyData.value.value = props.vacancy.vacancy_name
 }
 </script>
