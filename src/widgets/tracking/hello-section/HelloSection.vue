@@ -2,13 +2,20 @@
   <section class="gradient-block">
     <div class="content">
       <h2 class="title">Добро пожаловать в личный кабинет</h2>
-      <base-button text="Настройки" color="primary" />
+      <p class="description">
+        Здесь вы можете получить информацию о статусе кандидатов, получить награду или перейти к настройкам своего аккаунта
+      </p>
+      <base-button text="Настройки" color="primary" @click="goSettings"/>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { BaseButton } from '@/shared/ui/button'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const goSettings = () => {router.push({ name: 'account-settings' })}
 </script>
 
 <style scoped>
@@ -18,20 +25,18 @@ import { BaseButton } from '@/shared/ui/button'
   -webkit-mask-image: var(--vt-gradient-bg-mask);
   padding: 3rem 2rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-height: 300px;
+  text-align: center;
 }
 
 .content {
   max-width: 600px;
-  padding-left: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: 100%;
-  gap: 15px;
+  align-items: center;
+  gap: 20px;
 }
 
 .title {
@@ -39,6 +44,11 @@ import { BaseButton } from '@/shared/ui/button'
   line-height: 1.2;
   font-weight: bold;
   color: var(--vt-black);
-  margin-bottom: auto;
+}
+
+.description {
+  font-size: 16px;
+  color: var(--vt-black-light);
+  line-height: 1.5;
 }
 </style>

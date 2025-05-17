@@ -16,9 +16,8 @@ import { useRouter } from 'vue-router'
 import {BaseButton} from '@/shared/ui/button'
 
 const router = useRouter()
-function goBack() {
-  router.push({ name: 'home' })
-}
+const goBack = () => {router.push({ name: 'home' })}
+
 </script>
 
 <style scoped>
@@ -32,12 +31,11 @@ function goBack() {
   align-items: center;
   height: 80vh;
   text-align: center;
-  background-color: #ffffff;
+  background-color: var(--vt-white);
   padding: 2rem;
 }
 
 .not-found-content {
-  user-select: none;
   max-width: 500px;
 }
 
