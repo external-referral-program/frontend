@@ -1,5 +1,7 @@
 import type { IMenuItem, ILastItem } from '@/widgets/header/ui/nav-menu/navMenu.types'
 import { SECTION_PATHS } from '@/shared/ui/sections/sectionIds'
+import { useUserStore } from '@/entities/user/model/store'
+import { computed } from 'vue'
 
 const menuItems: Array<IMenuItem> = [
   {
@@ -16,21 +18,41 @@ const menuItems: Array<IMenuItem> = [
   },
 ]
 
-const lastItem: ILastItem = {
-  title: 'Личный кабинет',
-  elements: [
-    {
-      title: 'Прогресс',
-      path: '/account/progress',
-    },
-    {
-      title: 'Настройки',
-      path: '/account/settings',
-    },
-  ],
-}
-
 export const useHeader = () => {
+  const userStore = useUserStore()
+
+  const lastItem = computed<ILastItem>(() => {
+    if (userStore.isAuthenticated) {
+      return {
+        title: 'Личный кабинет',
+        elements: [
+          {
+            title: 'Прогресс',
+            path: '/account/progress',
+          },
+          {
+            title: 'Настройки',
+            path: '/account/settings',
+          },
+        ],
+      }
+    }
+
+    return {
+      title: 'Личный кабинет',
+      elements: [
+        {
+          title: 'Войти',
+          path: '/signin',
+        },
+        {
+          title: 'Зарегистрироваться',
+          path: '/signup',
+        },
+      ],
+    }
+  })
+
   return {
     menuItems,
     lastItem,

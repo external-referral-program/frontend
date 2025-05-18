@@ -3,8 +3,15 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <router-view />
+  <div class="app-container">
+    <router-view />
+  </div>
 </template>
 
 <style scoped>
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 </style>

@@ -21,13 +21,12 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from) => {
-  if (to.name !== routes[0].children[0].name) return
   const cityStore = useCityStore()
+  await cityStore.loadAll()
+
+  if (to.name !== routes[0].children[0].name) return
   const vacancyStore = useVacancyStore()
-  if (!cityStore.list.length) {
-    await cityStore.loadAll()
-    await vacancyStore.loadAll()
-  }
+  await vacancyStore.loadAll()
 })
 
 export default router

@@ -34,7 +34,7 @@ import { useInvite } from '@/widgets/landing/invite-section/model/useInvite'
 
 const router = useRouter()
 
-const { friendVacancyData, friendCityData } = useInvite()
+const { friendVacancyData } = useInvite()
 
 const props = defineProps<{
   vacancy: IVacancy

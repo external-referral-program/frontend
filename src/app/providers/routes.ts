@@ -3,6 +3,8 @@ import NotFoundView from '@/pages/public/NotFoundView.vue'
 
 import ProgressView from '@/pages/protected/ProgressView.vue'
 import SettingsView from '@/pages/protected/SettingsView.vue'
+import SignUpView from '@/pages/public/SignUpView.vue'
+import SignInView from '@/pages/public/SignInView.vue'
 
 import BaseLayout from '@/app/layouts/BaseLayout.vue'
 
@@ -20,6 +22,9 @@ export const routes = [
           { path: 'settings', name: 'account-settings', component: SettingsView },
         ],
       },
+      { path: '/signup', name: 'signup', component: SignUpView },
+      { path: '/signin', name: 'signin', component: SignInView },
+
       {
         path: '/:pathMatch(.*)*',
         component: NotFoundView,

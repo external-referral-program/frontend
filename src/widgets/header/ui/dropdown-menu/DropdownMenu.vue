@@ -2,7 +2,7 @@
   <div class="dropdown-menu" v-click-outside="dropdownClose">
     <base-button @click="isOpen = !isOpen" :text="item.title" :rounded />
     <transition name="dropdown">
-      <ul v-show="isOpen"  class="dropdown-items">
+      <ul v-show="isOpen" class="dropdown-items">
         <li
           @click="isOpen = false"
           class="dropdown-item"
@@ -19,10 +19,13 @@
 </template>
 
 <script lang="ts" setup>
+import { useUserStore } from '@/entities/user/model/store'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import type { ILastItem } from '@/widgets/header/ui/nav-menu/navMenu.types'
 import { BaseButton } from '@/shared/ui/button'
+
+const { isAuthenticated } = useUserStore()
 
 defineProps<{
   item: ILastItem
@@ -70,6 +73,12 @@ const dropdownClose = () => {
   color: var(--vt-white);
   min-width: 100%;
   padding: 7px 0;
+}
+
+@media (max-width: 768px) {
+  .dropdown-link {
+    font-size: 18px;
+  }
 }
 
 .dropdown-link.active {
