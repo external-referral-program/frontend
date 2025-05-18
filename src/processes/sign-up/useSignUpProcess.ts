@@ -4,10 +4,9 @@ import { sendVerificationCode, signUpUser } from '@/entities/user/model/user.api
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const router = useRouter()
-
 export const useSignUpProcess = () => {
   const userStore = useUserStore()
+  const router = useRouter()
 
   const step = ref<'email' | 'code'>('email')
   const code = ref('')
@@ -71,9 +70,7 @@ export const useSignUpProcess = () => {
 
   const modifyRegistrationData = (data: IRegistrationData): IUser => {
     return {
-      name: data.name,
-      surname: data.surname,
-      patronymic_name: data.patronymic_name,
+      full_name: data.name + '' + data.surname + '' + data.patronymic_name,
       city_name: data.city_name,
       email: data.email,
       phone_number: data.phone_number,

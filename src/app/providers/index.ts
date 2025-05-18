@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from '@/app/providers/routes'
 import { useCityStore } from '@/entities/city/model/store'
 import { useVacancyStore } from '@/entities/vacancy/model/store'
+import { useUserStore } from '@/entities/user/model/store'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,13 +21,22 @@ const router = createRouter({
   },
 })
 
-router.beforeEach(async (to, from) => {
+router.beforeEach(async (to, from, next) => {
   const cityStore = useCityStore()
   await cityStore.loadAll()
 
-  if (to.name !== routes[0].children[0].name) return
-  const vacancyStore = useVacancyStore()
-  await vacancyStore.loadAll()
+  const homeName = routes[0].children?.[0].name
+  if (to.name === homeName) {
+    const vacancyStore = useVacancyStore()
+    await vacancyStore.loadAll()
+  }
+
+  const userStore = useUserStore()
+  if (to.meta.requiresAuth && !userStore.isAuthenticated) {
+    return next({ name: 'signup' })
+  }
+
+  next()
 })
 
 export default router

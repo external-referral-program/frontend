@@ -18,8 +18,18 @@ export const routes = [
         path: '/account',
         redirect: { name: 'account-settings' },
         children: [
-          { path: 'progress', name: 'account-progress', component: ProgressView },
-          { path: 'settings', name: 'account-settings', component: SettingsView },
+          {
+            path: 'progress',
+            name: 'account-progress',
+            component: ProgressView,
+            meta: { requiresAuth: true },
+          },
+          {
+            path: 'settings',
+            name: 'account-settings',
+            component: SettingsView,
+            meta: { requiresAuth: true },
+          },
         ],
       },
       { path: '/signup', name: 'signup', component: SignUpView },
