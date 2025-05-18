@@ -32,8 +32,8 @@ export const routes = [
           },
         ],
       },
-      { path: '/signup', name: 'signup', component: SignUpView },
-      { path: '/signin', name: 'signin', component: SignInView },
+      { path: '/signup', name: 'signup', component: SignUpView, meta: { requiresGuest: true } },
+      { path: '/signin', name: 'signin', component: SignInView, meta: { requiresGuest: true } },
 
       {
         path: '/:pathMatch(.*)*',

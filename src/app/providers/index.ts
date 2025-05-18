@@ -32,6 +32,10 @@ router.beforeEach(async (to, from, next) => {
   }
 
   const userStore = useUserStore()
+  if (to.meta.requiresGuest && userStore.isAuthenticated) {
+    return next({ name: 'account-progress' })
+  }
+
   if (to.meta.requiresAuth && !userStore.isAuthenticated) {
     return next({ name: 'signup' })
   }
