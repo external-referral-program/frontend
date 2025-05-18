@@ -48,15 +48,15 @@ const friendVacancyData = ref<IVacancyData>({
 
 const agreements = ref([
   {
-    label: 'Ознакомлен с правилами программы',
+    label: 'Ознакомлен с <a href="/docs/ProgramRules.pdf" download target="_blank" class="link">правилами</a> программы',
     value: false,
   },
   {
-    label: 'Я подтверждаю, что мной получено согласие друга на передачу его персональных данных',
+    label: 'Я подтверждаю, что мной получено <span class="link">согласие</span> друга на передачу его персональных данных',
     value: false,
   },
   {
-    label: 'Я подтверждаю, что согласен на обработку своих персональных данных',
+    label: 'Я подтверждаю, что согласен на обработку своих <a href="/docs/PrivacyPolicy.pdf" download target="_blank" class="link">персональных данных</a>',
     value: false,
   },
   {
