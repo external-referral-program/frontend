@@ -5,7 +5,9 @@
     <people-section />
     <asked-questions :id="SECTION_IDS.QUESTIONS" />
     <vacancy-section :id="SECTION_IDS.VACANCIES" />
-    <invite-section :id="SECTION_IDS.RECOMMEND" />
+    <auth-overlay>
+      <invite-section :id="SECTION_IDS.RECOMMEND" />
+    </auth-overlay>
   </div>
 </template>
 
@@ -16,6 +18,7 @@ import { PeopleSection } from '@/widgets/landing/people-section'
 import { AskedQuestions } from '@/widgets/landing/asked-questions'
 import { VacancySection } from '@/widgets/landing/vacancy-section'
 import { InviteSection } from '@/widgets/landing/invite-section'
+import { AuthOverlay } from '@/shared/ui/overlay'
 
 import { SECTION_IDS } from '@/shared/ui/sections/sectionIds'
 </script>
