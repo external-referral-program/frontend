@@ -1,9 +1,9 @@
 <template>
-  <div class="signup-page">
+  <div class="auth-page">
     <div class="form-container">
       <p v-if="step !== 'email'" @click="step = 'email'" class="form-back">Назад</p>
 
-      <h1>Регистрация</h1>
+      <h1 class="auth-title">Регистрация</h1>
       <form class="form" @submit.prevent="onSubmit">
         <div v-if="step === 'email'" class="form-inner">
           <base-input v-model="name" label="Имя" type="text" required autocomplete="name" />
@@ -125,68 +125,4 @@ const vacancyNames = computed(() => {
 </script>
 
 <style scoped>
-.signup-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--vt-grey);
-  height: 100%;
-  padding: 40px 0;
-}
-
-.form-container {
-  background: var(--vt-white);
-  padding: 2rem;
-  border-radius: var(--vt-radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 600px;
-  position: relative;
-}
-
-.form-back {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  cursor: pointer;
-  user-select: none;
-  position: absolute;
-  left: 8px;
-  top: 4px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.loader {
-  margin: 0 auto;
-}
-
-.form-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-h1 {
-  margin-bottom: 1.5rem;
-  text-align: center;
-  color: var(--vt-black);
-}
-
-.error-text {
-  margin-top: 0.25rem;
-  font-size: 0.875rem;
-  color: var(--vt-red);
-}
-
-@media (max-width: 768px) {
-  .form-container {
-    padding: 1rem;
-  }
-}
 </style>

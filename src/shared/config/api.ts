@@ -9,4 +9,5 @@ export const API_CONFIG = {
   REGISTER_USER_ENDPOINT: 'api/referer/registration/',
   LOG_OUT_USER_ENDPOINT: 'api/referer/logout/',
   PASSWORD_RESET_ENDPOINT: 'api/referer/password-reset/',
+  SIGN_IN_USER_ENDPOINT: 'api/referer/login/',
 }

@@ -1,6 +1,6 @@
 import { api } from '@/shared/api/axiosSettings'
 import { API_CONFIG } from '@/shared/config/api'
-import type { IRegistrationData, IPasswordChange } from '@/entities/user/model/types'
+import type { IRegistrationData, IPasswordChange, ISignInData } from '@/entities/user/model/types'
 
 export const sendVerificationCode = (email: string) => {
   return api.post(API_CONFIG.SEND_REGISTRATION_CODE_ENDPOINT, { email })
@@ -20,4 +20,8 @@ export const sendPasswordResetCode = (email: string) => {
 
 export const resetPassword = (data: IPasswordChange) => {
   return api.post(API_CONFIG.PASSWORD_RESET_ENDPOINT, data)
+}
+
+export const signInUser = (data: ISignInData) => {
+  return api.post(API_CONFIG.SIGN_IN_USER_ENDPOINT, data)
 }

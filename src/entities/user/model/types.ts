@@ -21,3 +21,18 @@ export interface IPasswordChange {
   password: string
   code: string
 }
+
+export interface ISignInData {
+  email: string
+  password: string
+}
+
+export interface ISignedInUser {
+  created: string
+  detail: string
+  email: string
+  expires: string
+  full_name: string
+  phone_number: string
+  token: string
+}
