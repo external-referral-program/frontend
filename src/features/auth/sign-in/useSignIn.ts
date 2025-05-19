@@ -39,7 +39,7 @@ export const useSignIn = () => {
     try {
       const response = await signInUser(data)
       const { token } = response.data
-      const modifiedData = modifyRegistrationData(data)
+      const modifiedData = modifyRegistrationData(response.data)
 
       userStore.setAuth(token, modifiedData)
       console.log(response)

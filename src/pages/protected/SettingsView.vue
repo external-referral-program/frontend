@@ -47,6 +47,7 @@ const userData = ref<IUser>({
 const setUserData = () => {
   if (!user.value) return
 
+  console.log(user.value)
   userData.value = user.value
 }
 
