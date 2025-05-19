@@ -10,4 +10,5 @@ export const API_CONFIG = {
   LOG_OUT_USER_ENDPOINT: 'api/referer/logout/',
   PASSWORD_RESET_ENDPOINT: 'api/referer/password-reset/',
   SIGN_IN_USER_ENDPOINT: 'api/referer/login/',
+  RECOMMEND_REFERRAL: 'api/referer/recommendation/',
 }

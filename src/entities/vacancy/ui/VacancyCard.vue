@@ -30,11 +30,10 @@ import type { IVacancy } from '@/entities/vacancy/model/types'
 import { BaseButton } from '@/shared/ui/button'
 import { BaseArrow } from '@/shared/ui/arrow'
 import { baseRoute, SECTION_IDS } from '@/shared/ui/sections/sectionIds'
-import { useInvite } from '@/widgets/landing/invite-section/model/useInvite'
-
+import { useRecommend } from '@/processes/recommend-referral/useRecommend'
 const router = useRouter()
 
-const { friendVacancyData } = useInvite()
+const { friendVacancyData } = useRecommend()
 
 const props = defineProps<{
   vacancy: IVacancy

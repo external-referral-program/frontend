@@ -8,6 +8,7 @@
       @blur="isFocused = false"
       v-bind="$attrs"
     />
+    <span v-if="errorText" class="error-label">{{ errorText }}</span>
     <label class="placeholder-label" :class="isLabelAtTop">{{ label }}</label>
   </div>
 </template>
@@ -18,7 +19,7 @@ import type { InputType } from '@/shared/ui/input/model/input.types'
 
 const props = defineProps({
   type: {
-    type: String as PropType<InputType>,
+    type: String as PropType<InputType> | InputType,
     default: 'text',
   },
   modelValue: {
@@ -26,6 +27,10 @@ const props = defineProps({
     required: true,
   },
   label: {
+    type: String,
+    default: '',
+  },
+  errorText: {
     type: String,
     default: '',
   },
@@ -53,6 +58,7 @@ const isLabelAtTop = computed(() => {
 .input-container {
   position: relative;
   margin: 6px 0;
+  margin-bottom: 20px;
 }
 
 .base-input {
@@ -95,5 +101,13 @@ const isLabelAtTop = computed(() => {
   font-weight: 500;
   transform: translateY(0);
   color: var(--vt-blue);
+}
+
+.error-label {
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+  font-size: 14px;
+  color: var(--vt-red);
 }
 </style>

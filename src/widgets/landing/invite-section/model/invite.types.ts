@@ -6,7 +6,8 @@ export interface IInputData {
   label: string
   value: string
   type: InputType
-  error: string | null
+  error: string
+  autocomplete?: string
 }
 
 export interface ICityData {

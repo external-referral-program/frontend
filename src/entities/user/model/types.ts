@@ -36,3 +36,13 @@ export interface ISignedInUser {
   phone_number: string
   token: string
 }
+
+export interface IRecommendData {
+  surname: string
+  name: string
+  patronymic_name: string
+  vacancy: number
+  city_name: string
+  email: string
+  phone_number: string
+}

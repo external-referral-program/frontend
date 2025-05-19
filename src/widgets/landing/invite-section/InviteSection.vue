@@ -1,16 +1,49 @@
 <template>
   <section class="base-body">
-    <div class="base-container">
+    <form class="base-container">
       <h2 class="base-title">Пригласить друга</h2>
       <h3 class="base-subtitle">Контактные данные друга</h3>
       <div class="data-inputs">
         <base-input
-          v-for="(data, index) in friendInputData"
-          v-model="data.value"
-          :type="data.type"
-          :label="data.label"
-          :key="index"
+          v-model="friendNameInputData.nameValue"
+          :type="friendNameInputData.type"
+          :label="friendNameInputData.nameLabel"
+          :autocomplete="friendNameInputData.autocomplete"
+          required
         />
+        <base-input
+          v-model="friendNameInputData.surnameValue"
+          :type="friendNameInputData.type"
+          :label="friendNameInputData.surnameLabel"
+          :autocomplete="friendNameInputData.autocomplete"
+          required
+        />
+        <base-input
+          v-model="friendNameInputData.patronymicNameValue"
+          :type="friendNameInputData.type"
+          :label="friendNameInputData.patronymicNameLabel"
+          :autocomplete="friendNameInputData.autocomplete"
+          required
+        />
+        <base-input
+          v-model="friendTelInputData.value"
+          :type="friendTelInputData.type"
+          :label="friendTelInputData.label"
+          :autocomplete="friendTelInputData.autocomplete"
+          required
+          :error-text="!isTelValid && friendTelInputData.value ? friendTelInputData.error : ''"
+        />
+        <base-input
+          v-model="friendEmailInputData.value"
+          :type="friendEmailInputData.type"
+          :label="friendEmailInputData.label"
+          :autocomplete="friendEmailInputData.autocomplete"
+          required
+          :error-text="
+            !isEmailValid && friendEmailInputData.value ? friendEmailInputData.error : ''
+          "
+        />
+
         <base-select
           v-model="friendCityData.value"
           :label="friendCityData.label"
@@ -30,75 +63,38 @@
           :key="index"
         />
       </div>
-      <base-button @click="clickRecommend" :disabled="!isAllAgree" text="Рекомендовать" />
-    </div>
+      <base-loader class="loader" v-if="loading" />
+      <base-button v-else @click="clickRecommend" :disabled="!areAllValid" text="Рекомендовать" />
+      <p v-if="error" class="error-text">{{ error }}</p>
+    </form>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia'
-import { useCityStore } from '@/entities/city/model/store'
-import { useVacancyStore } from '@/entities/vacancy/model/store'
-
-import { computed, watch } from 'vue'
-
 import { BaseInput } from '@/shared/ui/input/index'
 import { BaseSelect } from '@/shared/ui/select'
 import { BaseCheckbox } from '@/shared/ui/checkbox'
 import { BaseButton } from '@/shared/ui/button'
-import { useInvite } from '@/widgets/landing/invite-section/model/useInvite'
+import { BaseLoader } from '@/shared/ui/loader'
+
+import { useRecommend } from '@/processes/recommend-referral/useRecommend'
 
 const {
-  friendInputData,
+  friendNameInputData,
+  friendTelInputData,
+  friendEmailInputData,
   friendCityData,
   friendVacancyData,
   agreements,
-  isAllAgree,
+  areAllValid,
   clickRecommend,
-} = useInvite()
-
-const cityStore = useCityStore()
-const vacancyStore = useVacancyStore()
-
-const { list: cities } = storeToRefs(cityStore)
-const { list: vacancies } = storeToRefs(vacancyStore)
-
-const cityNames = computed(() => {
-  return cities.value.map((city) => city.city_name)
-})
-
-const vacancyNames = computed(() => {
-  const selectedCity = friendCityData.value.value
-  if (selectedCity) {
-    return vacancies.value
-      .filter((vacancy) => vacancy.city.city_name === selectedCity)
-      .map((vacancy) => vacancy.vacancy_name)
-  }
-  return vacancies.value.map((vacancy) => vacancy.vacancy_name)
-})
-
-watch(
-  () => friendVacancyData.value.value,
-  () => {
-    if (friendVacancyData.value.value) {
-      const selectedVacancy = vacancies.value.find(
-        (vacancy) => vacancy.vacancy_name === friendVacancyData.value.value,
-      )
-      if (selectedVacancy) {
-        friendCityData.value.value = selectedVacancy.city.city_name
-      }
-    }
-  },
-)
-
-watch(
-  () => friendCityData.value.value,
-  () => {
-    if (!friendCityData.value.value) {
-      friendVacancyData.value.value = ''
-    }
-  },
-)
+  cityNames,
+  vacancyNames,
+  isTelValid,
+  isEmailValid,
+  loading,
+  error,
+} = useRecommend()
 </script>
 
 <style scoped>
