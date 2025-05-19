@@ -1,10 +1,6 @@
 <template>
   <div class="status-progress" :class="{ completed: isCompleted }">
-    <div
-      v-for="(step, index) in steps"
-      :key="index"
-      class="step-row"
-    >
+    <div v-for="(step, index) in steps" :key="index" class="step-row">
       <div class="indicator-wrapper">
         <div class="dot" :class="{ completed: index < currentStep }"></div>
         <div
@@ -33,18 +29,15 @@ defineProps({
   },
   isCompleted: {
     type: Boolean,
-    required: false,
     default: false
   }
 })
 
 function getStepDescription(index: number): string {
   const descriptions = [
-    'Ваша заявка была рассмотрена',
-    'Кандидат успешно прошел собеседование',
-    'Кандидат выбран на оформление документов',
-    'Начался испытательный срок',
-    'Ожидание выплаты за рекомендацию'
+    'Ваша заявка была создана',
+    'Рассматриваем кандидата',
+    'Кандидат одобрен'
   ]
   return descriptions[index] || ''
 }
@@ -106,6 +99,14 @@ function getStepDescription(index: number): string {
   background-color: var(--vt-purple);
 }
 
+.status-progress.completed .dot.completed {
+  background-color: var(--vt-blue);
+}
+
+.status-progress.completed .line.active {
+  background-color: var(--vt-blue);
+}
+
 .text {
   flex: 1;
   display: flex;
@@ -122,13 +123,5 @@ function getStepDescription(index: number): string {
 .description {
   font-size: 12px;
   color: #888;
-}
-
-.status-progress.completed .dot.completed {
-  background-color: var(--vt-blue);
-}
-
-.status-progress.completed .line.active {
-  background-color: var(--vt-blue);
 }
 </style>
