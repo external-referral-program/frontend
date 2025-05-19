@@ -54,12 +54,14 @@ const setUserData = () => {
 setUserData()
 
 const password = ref('12345678')
-
 </script>
 
 <style scoped>
 .account-settings {
   height: 100%;
+  background: var(--vt-gradient-bg);
+  mask-image: var(--vt-gradient-bg-mask);
+  -webkit-mask-image: var(--vt-gradient-bg-mask);
 }
 
 .account-settings-container {
