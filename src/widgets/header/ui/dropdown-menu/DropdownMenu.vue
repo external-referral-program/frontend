@@ -94,7 +94,7 @@ const logOut = async () => {
 }
 
 .dropdown-link.leave {
-  color: var(--vt-red);
+  color: var(--vt-white);
 }
 
 @media (max-width: 768px) {
