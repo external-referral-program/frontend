@@ -61,6 +61,7 @@ function getStepDescription(index: number): string {
   align-items: flex-start;
   position: relative;
   height: 60px;
+  margin: -6px;
 }
 
 .indicator-wrapper {
@@ -94,7 +95,7 @@ function getStepDescription(index: number): string {
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
+  width: 3px;
   height: calc(100% - 10px);
   background-color: #ddd;
   z-index: 1;

@@ -7,14 +7,15 @@
         :key="candidate.id"
         class="candidate-item"
         :class="{ expanded: expandedId === candidate.id }"
-        @click="toggleStatus(candidate.id)"
       >
-        <div class="candidate-header" >
-          <span class="candidate-name">{{ candidate.name }}</span>
-          <span :class="{ rotated: expandedId === candidate.id }">▼</span>
+        <div class="clickable-area" @click="toggleStatus(candidate.id)">
+        <div class="candidate-header">
+        <span class="candidate-name">{{ candidate.name }}</span>
+        <BaseArrow :isDown="expandedId === candidate.id" />
         </div>
-        <p>{{ candidate.status }}</p>
 
+        <p>{{ candidate.status }}</p>
+        </div>
         <transition name="fade-slide" appear @click.stop>
           <div v-if="expandedId === candidate.id" class="candidate-status">
             <div class="status-wrapper">
@@ -42,6 +43,8 @@
 import { ref } from 'vue'
 import { BaseButton } from '@/shared/ui/button'
 import StatusProgress from '@/widgets/progress/StatusProgress.vue'
+import { BaseArrow } from '@/shared/ui/arrow'
+
 
 interface Candidate {
   id: number
@@ -76,6 +79,10 @@ const getStatusProgress = (status: string): number => {
 </script>
 
 <style scoped>
+.clickable-area {
+  cursor: pointer;
+}
+
 .candidates-block {
   padding: 2rem;
 }
@@ -108,6 +115,7 @@ const getStatusProgress = (status: string): number => {
   display: flex;
   justify-content: space-between;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .candidate-name {
