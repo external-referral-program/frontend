@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type { IUser } from '@/entities/user/model/types'
+import { logOutUser } from '@/entities/user/model/user.api'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -18,11 +19,17 @@ export const useUserStore = defineStore('user', {
       localStorage.setItem('user', JSON.stringify(user))
     },
 
-    clearAuth() {
-      this.token = null
-      this.user = null
-      localStorage.removeItem('access_token')
-      localStorage.removeItem('user')
+    async clearAuth() {
+      try {
+        await logOutUser()
+
+        this.token = null
+        this.user = null
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('user')
+      } catch (e) {
+        console.error(e)
+      }
     },
 
     init() {

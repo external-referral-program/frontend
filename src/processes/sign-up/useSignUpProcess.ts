@@ -70,7 +70,7 @@ export const useSignUpProcess = () => {
 
   const modifyRegistrationData = (data: IRegistrationData): IUser => {
     return {
-      full_name: data.name + '' + data.surname + '' + data.patronymic_name,
+      full_name: data.surname + ' ' + data.name + ' ' + data.patronymic_name,
       city_name: data.city_name,
       email: data.email,
       phone_number: data.phone_number,

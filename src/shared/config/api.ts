@@ -5,5 +5,8 @@ export const API_CONFIG = {
   CITIES_ENDPOINT: '/api/cities-list/',
 
   SEND_REGISTRATION_CODE_ENDPOINT: 'api/referer/send-registration-code/',
+  SEND_PASSWORD_RESET_CODE_ENDPOINT: 'api/referer/send-password-reset-code/',
   REGISTER_USER_ENDPOINT: 'api/referer/registration/',
+  LOG_OUT_USER_ENDPOINT: 'api/referer/logout/',
+  PASSWORD_RESET_ENDPOINT: 'api/referer/password-reset/',
 }

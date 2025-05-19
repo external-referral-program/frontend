@@ -15,3 +15,9 @@ export interface IRegistrationData {
   phone_number: string
   city_name: string
 }
+
+export interface IPasswordChange {
+  email: string
+  password: string
+  code: string
+}

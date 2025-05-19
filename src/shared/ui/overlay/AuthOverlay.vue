@@ -19,8 +19,11 @@
 <script lang="ts" setup>
 import { useUserStore } from '@/entities/user/model/store'
 import { BaseButton } from '@/shared/ui/button'
+import { storeToRefs } from 'pinia'
 
-const { isAuthenticated } = useUserStore()
+const userStore = useUserStore()
+
+const { isAuthenticated } = storeToRefs(userStore)
 </script>
 
 <style scoped>

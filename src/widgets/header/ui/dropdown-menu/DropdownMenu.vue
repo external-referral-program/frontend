@@ -13,6 +13,9 @@
             {{ subItem.title }}
           </router-link>
         </li>
+        <li @click="logOut()" class="dropdown-item" v-if="isAuthenticated">
+          <div class="dropdown-link leave">Выйти</div>
+        </li>
       </ul>
     </transition>
   </div>
@@ -22,14 +25,20 @@
 import { useUserStore } from '@/entities/user/model/store'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { useRouter } from 'vue-router'
 import type { ILastItem } from '@/widgets/header/ui/nav-menu/navMenu.types'
 import { BaseButton } from '@/shared/ui/button'
-
-const { isAuthenticated } = useUserStore()
+import { storeToRefs } from 'pinia'
 
 defineProps<{
   item: ILastItem
 }>()
+
+const userStore = useUserStore()
+const router = useRouter()
+
+const { isAuthenticated } = storeToRefs(userStore)
+const { clearAuth } = userStore
 
 const rounded = 10
 
@@ -37,6 +46,14 @@ const isOpen = ref(false)
 
 const dropdownClose = () => {
   isOpen.value = false
+}
+
+const logOut = async () => {
+  await clearAuth()
+
+  router.push({ name: 'home' })
+
+  dropdownClose()
 }
 </script>
 
@@ -73,6 +90,11 @@ const dropdownClose = () => {
   color: var(--vt-white);
   min-width: 100%;
   padding: 7px 0;
+  cursor: pointer;
+}
+
+.dropdown-link.leave {
+  color: var(--vt-red);
 }
 
 @media (max-width: 768px) {
