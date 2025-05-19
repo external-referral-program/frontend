@@ -3,6 +3,7 @@ export const API_CONFIG = {
 
   VACANCIES_ENDPOINT: '/api/vacancies-list/',
   CITIES_ENDPOINT: '/api/cities-list/',
+  REFERRALS_ENDPOINT: '/api/referer/referrals/',
 
   SEND_REGISTRATION_CODE_ENDPOINT: 'api/referer/send-registration-code/',
   SEND_PASSWORD_RESET_CODE_ENDPOINT: 'api/referer/send-password-reset-code/',
