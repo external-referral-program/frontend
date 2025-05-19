@@ -4,6 +4,7 @@
 
     <div v-if="referralStore.loading">Загрузка...</div>
     <div v-else-if="referralStore.error">{{ referralStore.error }}</div>
+    <div v-else-if="referralStore.list.length === 0">Список кандидатов пуст</div>
     <ul v-else class="candidate-list">
       <li
         v-for="(candidate, index) in referralStore.list"

@@ -20,14 +20,19 @@ export const useReferralStore = defineStore('referral', {
         .then((res) => {
           this.list = res.data
         })
-        .catch((e) => {
-          this.error = e.message || 'Ошибка загрузки рефералов'
+        .catch((e: any) => {
+          if (e.response?.status === 404) {
+            this.list = []
+            this.error = null
+          } else {
+            this.error = e.message || 'Ошибка загрузки рефералов'
+          }
         })
         .finally(() => {
           this.loading = false
         })
     },
-
+    
     clear() {
       this.list = []
     },
