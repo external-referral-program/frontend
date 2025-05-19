@@ -163,10 +163,12 @@ const formatStatus = (status: string): string => {
   cursor: pointer;
   background-color: transparent;
   z-index: 1;
+  transition: .3s linear;
 }
 
 .clickable-area:hover {
   background-color: rgba(0, 0, 0, 0.03);
+  transition: .3s linear;
 }
 
 .candidate-header {
