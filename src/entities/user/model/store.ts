@@ -21,7 +21,7 @@ export const useUserStore = defineStore('user', {
 
     async clearAuth() {
       try {
-        await logOutUser()
+        // await logOutUser()
 
         this.token = null
         this.user = null

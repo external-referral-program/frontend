@@ -12,4 +12,6 @@ export const API_CONFIG = {
   SIGN_IN_USER_ENDPOINT: 'api/referer/login/',
   RECOMMEND_REFERRAL: 'api/referer/recommendation/',
   REFERRALS_ENDPOINT: '/api/referer/referrals/',
+  SEND_ACCOUNT_DELETE_CODE_ENDPOINT: 'api/referer/send-account-delete-code/',
+  ACCOUNT_DELETE_ENDPOINT: 'api/referer/account-delete/',
 }

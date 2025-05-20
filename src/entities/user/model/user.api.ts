@@ -6,6 +6,7 @@ import type {
   IPasswordChange,
   ISignInData,
   IRecommendData,
+  IAccountDeleteData,
 } from '@/entities/user/model/types'
 
 export const sendVerificationCode = (email: string) => {
@@ -34,4 +35,12 @@ export const signInUser = (data: ISignInData) => {
 
 export const recommendReferral = (data: IRecommendData) => {
   return api.post(API_CONFIG.RECOMMEND_REFERRAL, data)
+}
+
+export const sendAccountDeleteCode = () => {
+  return api.post(API_CONFIG.SEND_ACCOUNT_DELETE_CODE_ENDPOINT)
+}
+
+export const accountDelete = (data: IAccountDeleteData) => {
+  return api.post(API_CONFIG.ACCOUNT_DELETE_ENDPOINT, data)
 }

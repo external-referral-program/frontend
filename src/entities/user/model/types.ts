@@ -46,3 +46,8 @@ export interface IRecommendData {
   email: string
   phone_number: string
 }
+
+export interface IAccountDeleteData {
+  code: string
+  email: string
+}

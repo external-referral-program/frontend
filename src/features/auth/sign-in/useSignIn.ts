@@ -20,6 +20,7 @@ export const useSignIn = () => {
     return email.value.trim().length > 0 && password.value.length >= minPasswordLength
   })
 
+  // todo Добавлять city_name
   const modifyRegistrationData = (data: ISignedInUser): IUser => {
     return {
       full_name: data.full_name,

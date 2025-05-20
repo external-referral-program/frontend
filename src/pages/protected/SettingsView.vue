@@ -51,11 +51,14 @@
           <p v-if="error" class="error-text">{{ error }}</p>
         </div>
       </form>
+
+      <delete-account-process />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { DeleteAccountProcess } from '@/processes/delete-account'
 import { usePasswordReset } from '@/features/auth/password-change/usePasswordReset'
 import { BaseInput } from '@/shared/ui/input'
 import { BaseButton } from '@/shared/ui/button'
@@ -104,6 +107,10 @@ const {
   position: relative;
 }
 
+form.settings-elem {
+  margin-bottom: 70px;
+}
+
 .password-elem {
   display: flex;
   flex-direction: column;
@@ -148,7 +155,7 @@ const {
 
   .elem-title {
     font-size: 16px;
-  font-weight: 400;
+    font-weight: 400;
   }
 }
 </style>
