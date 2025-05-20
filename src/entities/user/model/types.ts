@@ -18,7 +18,7 @@ export interface IRegistrationData {
 
 export interface IPasswordChange {
   email: string
-  password: string
+  new_password: string
   code: string
 }
 

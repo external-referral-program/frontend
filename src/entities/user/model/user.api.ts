@@ -1,5 +1,6 @@
 import { api } from '@/shared/api/axiosSettings'
 import { API_CONFIG } from '@/shared/config/api'
+
 import type {
   IRegistrationData,
   IPasswordChange,

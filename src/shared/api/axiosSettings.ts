@@ -16,8 +16,16 @@ api.interceptors.request.use((config) => {
   if (isPublicRoute) return config
 
   const token = localStorage.getItem('access_token')
+
   if (token) {
-    config.headers.Authorization = `Token ${token}`
+    const anotherRoutes = [
+      API_CONFIG.SEND_PASSWORD_RESET_CODE_ENDPOINT,
+      API_CONFIG.PASSWORD_RESET_ENDPOINT,
+    ]
+    const isAnotherRoute = anotherRoutes.some((route) => config.url?.startsWith(route))
+
+    if (isAnotherRoute) config.headers.Authorization = `Bearer ${token}`
+    else config.headers.Authorization = `Token ${token}`
   }
   return config
 })
