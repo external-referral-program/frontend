@@ -32,7 +32,7 @@ export const useReferralStore = defineStore('referral', {
           this.loading = false
         })
     },
-    
+
     clear() {
       this.list = []
     },

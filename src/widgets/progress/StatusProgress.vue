@@ -33,7 +33,7 @@ defineProps({
   }
 })
 
-function getStepDescription(index: number): string {
+const getStepDescription = (index: number): string => {
   const descriptions = [
     'Ваша заявка была создана',
     'Рассматриваем кандидата',

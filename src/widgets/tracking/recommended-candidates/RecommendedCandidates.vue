@@ -20,7 +20,7 @@
         <div class="clickable-area" :class="{ expanded: expandedId === index }">
           <div class="candidate-header">
             <span class="candidate-name">{{ candidate.full_name }}</span>
-            <BaseArrow v-if="isExpandable(candidate.status)" :isDown="expandedId === index" />
+            <base-arrow v-if="isExpandable(candidate.status)" :is-down="expandedId === index" />
           </div>
           <p>{{ formatStatus(candidate.status) }}</p>
         </div>
@@ -33,14 +33,14 @@
           >
             <div class="content-wrapper">
               <div class="status-wrapper">
-                <StatusProgress
+                <status-progress
                   :current-step="getStatusProgress(candidate.status)"
                   :steps="stepLabels"
                   :is-completed="candidate.status === 'candidate accepted'"
                 />
               </div>
               <div class="reward-button-wrapper">
-                <BaseButton
+                <base-button
                   text="Получить награду"
                   color="primary"
                   :disabled="candidate.status !== 'candidate accepted'"
@@ -57,7 +57,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useReferralStore } from '@/entities/referral/model/store'
-import StatusProgress from '@/widgets/progress/StatusProgress.vue'
+import { StatusProgress } from '@/widgets/progress'
 import { BaseButton } from '@/shared/ui/button'
 import { BaseArrow } from '@/shared/ui/arrow'
 
