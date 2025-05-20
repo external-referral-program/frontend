@@ -128,6 +128,7 @@ export const useRecommend = () => {
   const cityStore = useCityStore()
   const vacancyStore = useVacancyStore()
 
+  const isSuccess = ref(false)
   const loading = ref(false)
   const error = ref<Error | null>(null)
 
@@ -178,6 +179,8 @@ export const useRecommend = () => {
 
     if (!vacancyId) return
 
+    isSuccess.value = false
+    error.value = null
     loading.value = true
 
     const data: IRecommendData = {
@@ -191,9 +194,10 @@ export const useRecommend = () => {
     }
 
     try {
-      await recommendReferral(data)
+      const resp = await recommendReferral(data)
+      console.log(resp, 'resp')
+      isSuccess.value = true
     } catch (e) {
-      console.log(e)
       error.value = e as Error
     } finally {
       loading.value = false
@@ -201,6 +205,7 @@ export const useRecommend = () => {
   }
 
   return {
+    isSuccess,
     isTelValid,
     isEmailValid,
     friendCityData,

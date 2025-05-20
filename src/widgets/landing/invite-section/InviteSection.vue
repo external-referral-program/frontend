@@ -66,6 +66,7 @@
       <base-loader class="loader" v-if="loading" />
       <base-button v-else @click="clickRecommend" :disabled="!areAllValid" text="Рекомендовать" />
       <p v-if="error" class="error-text">{{ error }}</p>
+      <p v-else-if="isSuccess">Приглашение успешно отправлено</p>
     </form>
   </section>
 </template>
@@ -80,6 +81,7 @@ import { BaseLoader } from '@/shared/ui/loader'
 import { useRecommend } from '@/processes/recommend-referral/useRecommend'
 
 const {
+  isSuccess,
   friendNameInputData,
   friendTelInputData,
   friendEmailInputData,
