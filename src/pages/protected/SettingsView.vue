@@ -18,7 +18,7 @@
       <form class="settings-elem">
         <div class="password-elem">
           <div class="elem-title">Пароль</div>
-          <div @click="getCode(userData.email)" class="forgot-password">Забыли пароль?</div>
+          <div @click="getCode(userData.email)" class="forgot-password">Поменять пароль</div>
         </div>
 
         <div>
