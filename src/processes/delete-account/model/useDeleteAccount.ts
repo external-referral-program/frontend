@@ -10,17 +10,20 @@ export const useDeleteAccount = () => {
   const { user } = userStore
 
   const code = ref('')
+  const message = ref('')
   const error = ref<Error | null>(null)
   const loading = ref(false)
 
   const isCodeSent = ref(false)
 
   const sendDeleteCode = async () => {
+    message.value = ''
     error.value = null
     loading.value = true
     try {
-      await sendAccountDeleteCode()
+      const resp = await sendAccountDeleteCode()
       isCodeSent.value = true
+      message.value = resp.data.details
     } catch (e: any) {
       error.value = e.message || 'Ошибка отправки кода'
       console.error(e)
@@ -30,6 +33,7 @@ export const useDeleteAccount = () => {
   }
 
   const deleteAccountWithCode = async (code: string, email: string) => {
+    message.value = ''
     error.value = null
     loading.value = true
 
@@ -39,7 +43,7 @@ export const useDeleteAccount = () => {
     }
     try {
       const resp = await accountDelete(data)
-      console.log(resp)
+      message.value = resp.data.detail
       await userStore.clearAuth()
       router.push({ name: 'home' })
     } catch (e: any) {
@@ -59,5 +63,5 @@ export const useDeleteAccount = () => {
     },
   )
 
-  return { code, sendDeleteCode, error, loading, isCodeSent }
+  return { code, sendDeleteCode, error, loading, isCodeSent, message }
 }

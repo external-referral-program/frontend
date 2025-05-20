@@ -125,6 +125,13 @@
   color: var(--vt-red);
 }
 
+.success-text {
+  color: var(--vt-blue);
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
   .form-container {
     padding: 1rem;

@@ -48,7 +48,7 @@
             text="Сохранить"
           />
           <p v-if="message" class="success-text">{{ message }}</p>
-          <p v-if="error" class="error-text">{{ error }}</p>
+          <p v-else-if="error" class="error-text">{{ error }}</p>
         </div>
       </form>
 
@@ -132,13 +132,6 @@ form.settings-elem {
 .elem-title {
   font-size: 21px;
   font-weight: 700;
-}
-
-.success-text {
-  color: var(--vt-blue);
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: 500;
 }
 
 @media (max-width: 1024px) {

@@ -10,7 +10,8 @@
       v-model="code"
       label="Код подтверждения"
     />
-    <p class="error-text">{{ error }}</p>
+    <p v-if="message" class="success-text">{{ message }}</p>
+    <p v-else-if="error" class="error-text">{{ error }}</p>
     <base-loader class="loader" v-if="loading" />
   </div>
 </template>
@@ -21,7 +22,7 @@ import { BaseButton } from '@/shared/ui/button'
 import { BaseInput } from '@/shared/ui/input'
 import { BaseLoader } from '@/shared/ui/loader'
 
-const { sendDeleteCode, code, isCodeSent, loading, error } = useDeleteAccount()
+const { sendDeleteCode, code, isCodeSent, loading, error, message } = useDeleteAccount()
 </script>
 
 <style scoped>
