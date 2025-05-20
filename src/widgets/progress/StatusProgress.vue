@@ -71,7 +71,7 @@ const getStepDescription = (index: number): string => {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #ddd;
+  background-color: var(--vt-grey-dark);
   z-index: 2;
   margin-top: 6px;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -90,7 +90,7 @@ const getStepDescription = (index: number): string => {
   transform: translateX(-50%);
   width: 3px;
   height: calc(100% - 10px);
-  background-color: #ddd;
+  background-color: var(--vt-grey-dark);
   z-index: 1;
   transition: background-color 0.3s ease;
 }
