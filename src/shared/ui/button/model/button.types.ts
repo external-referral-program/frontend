@@ -1,1 +1,1 @@
-export type ButtonColor = 'primary' | 'secondary'
+export type ButtonColor = 'primary' | 'secondary' | 'accept'

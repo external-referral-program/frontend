@@ -2,18 +2,19 @@
   <section class="candidates-block">
     <h2 class="subtitle">Рекомендованные кандидаты</h2>
 
-    <div v-if="referralStore.loading">Загрузка...</div>
-    <div v-else-if="referralStore.error">{{ referralStore.error }}</div>
-    <div v-else-if="referralStore.list.length === 0">Список кандидатов пуст</div>
+    <base-loader v-if="loading" class="loader" color="primary" />
+    <div v-else-if="error">{{ error }}</div>
+    <div v-else-if="list.length === 0">Список кандидатов пуст</div>
     <ul v-else class="candidate-list">
       <li
-        v-for="(candidate, index) in referralStore.list"
+        v-for="(candidate, index) in list"
         :key="index"
         class="candidate-item"
         :class="{
           expanded: expandedId === index,
           denied: candidate.status === 'denied',
-          paid: candidate.status === 'paid'
+          paid: candidate.status === 'paid',
+          accepted: candidate.status === 'candidate accepted',
         }"
         @click="handleClick(candidate.status, index)"
       >
@@ -42,7 +43,7 @@
               <div class="reward-button-wrapper">
                 <base-button
                   text="Получить награду"
-                  color="primary"
+                  :color="candidate.status === 'candidate accepted' ? 'accept' : 'primary'"
                   :disabled="candidate.status !== 'candidate accepted'"
                 />
               </div>
@@ -55,23 +56,20 @@
 </template>
 
 <script setup lang="ts">
+import { useGetReferrals } from '@/features/get-referrals/useGetReferrals'
 import { ref, onMounted } from 'vue'
-import { useReferralStore } from '@/entities/referral/model/store'
 import { StatusProgress } from '@/widgets/progress'
 import { BaseButton } from '@/shared/ui/button'
 import { BaseArrow } from '@/shared/ui/arrow'
+import { BaseLoader } from '@/shared/ui/loader'
 
-const referralStore = useReferralStore()
+const { list, error, loading, loadReferrals } = useGetReferrals()
 const expandedId = ref<number | null>(null)
 
-const stepLabels = [
-  'Заявка создана',
-  'В обработке',
-  'Кандидат принят'
-]
+const stepLabels = ['Заявка создана', 'В обработке', 'Кандидат принят']
 
-onMounted(() => {
-  referralStore.loadAll()
+onMounted(async () => {
+  await loadReferrals()
 })
 
 const isExpandable = (status: string): boolean => {
@@ -85,20 +83,20 @@ const handleClick = (status: string, index: number) => {
 
 const getStatusProgress = (status: string): number => {
   const map: Record<string, number> = {
-    'created': 1,
+    created: 1,
     'in work': 2,
-    'candidate accepted': 3
+    'candidate accepted': 3,
   }
   return map[status] ?? 0
 }
 
 const formatStatus = (status: string): string => {
   const map: Record<string, string> = {
-    'created': 'Заявка создана',
+    created: 'Заявка создана',
     'in work': 'В обработке',
     'candidate accepted': 'Кандидат принят',
-    'paid': 'Выплата произведена',
-    'denied': 'Отклонено'
+    paid: 'Выплата произведена',
+    denied: 'Отклонено',
   }
   return map[status] ?? status
 }
@@ -107,6 +105,12 @@ const formatStatus = (status: string): string => {
 <style scoped>
 .candidates-block {
   padding: 2rem;
+}
+
+@media (max-width: 425px) {
+  .candidates-block {
+    padding: 1rem;
+  }
 }
 
 .subtitle {
@@ -143,8 +147,14 @@ const formatStatus = (status: string): string => {
 }
 
 .candidate-item.paid {
-  background-color: var(--vt-blue-very-light);
+  background-color: var(--vt-blue-extra-light);
   border-left: 4px solid var(--vt-blue);
+  cursor: default;
+}
+
+.candidate-item.accepted {
+  background-color: var(--vt-green-light);
+  border-left: 4px solid var(--vt-green);
   cursor: default;
 }
 
@@ -163,18 +173,19 @@ const formatStatus = (status: string): string => {
   cursor: pointer;
   background-color: transparent;
   z-index: 1;
-  transition: .3s linear;
+  transition: 0.3s linear;
 }
 
 .clickable-area:hover {
   background-color: rgba(0, 0, 0, 0.03);
-  transition: .3s linear;
+  transition: 0.3s linear;
 }
 
 .candidate-header {
   display: flex;
   justify-content: space-between;
   font-weight: 500;
+  align-items: center;
 }
 
 .candidate-name {

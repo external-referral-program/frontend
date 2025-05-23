@@ -69,6 +69,10 @@ const computeRounded = computed(() => {
   background: var(--vt-purple);
 }
 
+.btn-accept {
+  background: var(--vt-green);
+}
+
 @media (max-width: 768px) {
   .base-button {
     font-size: 18px;

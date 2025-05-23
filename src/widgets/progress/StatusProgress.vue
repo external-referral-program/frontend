@@ -100,11 +100,11 @@ const getStepDescription = (index: number): string => {
 }
 
 .status-progress.completed .dot.completed {
-  background-color: var(--vt-blue);
+  background-color: var(--vt-green);
 }
 
 .status-progress.completed .line.active {
-  background-color: var(--vt-blue);
+  background-color: var(--vt-green);
 }
 
 .text {
