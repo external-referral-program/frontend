@@ -120,6 +120,20 @@ const areAllValid = computed(() => {
   )
 })
 
+const clearAllFields = () => {
+  friendNameInputData.value.nameValue = ''
+  friendNameInputData.value.surnameValue = ''
+  friendNameInputData.value.patronymicNameValue = ''
+  friendTelInputData.value.value = ''
+  friendEmailInputData.value.value = ''
+  friendCityData.value.value = ''
+  friendVacancyData.value.value = ''
+
+  agreements.value.forEach((agreement) => {
+    agreement.value = false
+  })
+}
+
 const getVacancyIdByName = (name: string, vacancies: IVacancy[]) => {
   return vacancies.find((vacancy) => vacancy.vacancy_name === name)?.id
 }
@@ -195,6 +209,7 @@ export const useRecommend = () => {
 
     try {
       const resp = await recommendReferral(data)
+      clearAllFields()
       console.log(resp, 'resp')
       isSuccess.value = true
     } catch (e) {
