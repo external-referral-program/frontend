@@ -127,6 +127,8 @@ const formatStatus = (status: string): string => {
 .candidate-item {
   position: relative;
   background: var(--vt-grey-light);
+  border-left: 4px solid var(--vt-grey-extra-dark);
+
   padding-top: 4rem;
   margin-bottom: 1rem;
   border-radius: var(--vt-radius);
