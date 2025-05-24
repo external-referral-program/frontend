@@ -51,3 +51,22 @@ export interface IAccountDeleteData {
   code: string
   email: string
 }
+
+export interface IPaymentData {
+  name: string
+  surname: string
+  patronymic_name: string
+  gender: string
+  birth_date: string
+  birth_place: string
+  issued_by: string
+  date_of_issue: string
+  department_code: string
+  passport_series: string
+  passport_number: string
+  SNILS_number: string
+  INN: string
+  BIC: string
+  bank_name: string
+  bank_book: string
+}

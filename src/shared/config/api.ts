@@ -11,7 +11,10 @@ export const API_CONFIG = {
   PASSWORD_RESET_ENDPOINT: 'api/referer/password-reset/',
   SIGN_IN_USER_ENDPOINT: 'api/referer/login/',
   RECOMMEND_REFERRAL: 'api/referer/recommendation/',
-  REFERRALS_ENDPOINT: '/api/referer/referrals/',
+  REFERRALS_ENDPOINT: 'api/referer/referrals/',
   SEND_ACCOUNT_DELETE_CODE_ENDPOINT: 'api/referer/send-account-delete-code/',
   ACCOUNT_DELETE_ENDPOINT: 'api/referer/account-delete/',
+
+  REFERRAL_PAYMENT_ENDPOINT_FIRST_PART: 'api/referer/referal/',
+  REFERRAL_PAYMENT_ENDPOINT_LAST_PART: '/payment/',
 }

@@ -7,6 +7,7 @@ import type {
   ISignInData,
   IRecommendData,
   IAccountDeleteData,
+  IPaymentData
 } from '@/entities/user/model/types'
 
 export const sendVerificationCode = (email: string) => {
@@ -43,4 +44,8 @@ export const sendAccountDeleteCode = () => {
 
 export const accountDelete = (data: IAccountDeleteData) => {
   return api.post(API_CONFIG.ACCOUNT_DELETE_ENDPOINT, data)
+}
+
+export const sendPayment = (data: IPaymentData, referrerId: string) => {
+  return api.post(API_CONFIG.REFERRAL_PAYMENT_ENDPOINT_FIRST_PART + referrerId + API_CONFIG.REFERRAL_PAYMENT_ENDPOINT_LAST_PART, data)
 }

@@ -1,10 +1,19 @@
 <template>
   <section class="candidates-block">
+    <!-- Модальное окно -->
+    <base-modal v-model="isOpen">
+      <template #header>Заполните платежные данные</template>
+
+      <template #default>
+        <send-payment-view :user-id="selectedUserId" @success="onSuccess" />
+      </template>
+    </base-modal>
+
     <h2 class="subtitle">Рекомендованные кандидаты</h2>
 
     <base-loader v-if="loading" class="loader" color="primary" />
-    <div v-else-if="error">{{ error }}</div>
     <div v-else-if="list.length === 0">Список кандидатов пуст</div>
+    <div v-else-if="error">{{ error }}</div>
     <ul v-else class="candidate-list">
       <li
         v-for="(candidate, index) in list"
@@ -45,6 +54,7 @@
                   text="Получить награду"
                   :color="candidate.status === 'candidate accepted' ? 'accept' : 'primary'"
                   :disabled="candidate.status !== 'candidate accepted'"
+                  @click="selectUser(candidate.id)"
                 />
               </div>
             </div>
@@ -56,17 +66,32 @@
 </template>
 
 <script setup lang="ts">
+import { BaseModal } from '@/shared/ui/modal'
+import { useModal } from '@/shared/ui/modal/model/useModal'
 import { useGetReferrals } from '@/features/get-referrals/useGetReferrals'
 import { ref, onMounted } from 'vue'
 import { StatusProgress } from '@/widgets/progress'
 import { BaseButton } from '@/shared/ui/button'
 import { BaseArrow } from '@/shared/ui/arrow'
 import { BaseLoader } from '@/shared/ui/loader'
+import { SendPaymentView } from '@/processes/send-payment'
 
+const { isOpen, open, close, toggle } = useModal()
 const { list, error, loading, loadReferrals } = useGetReferrals()
 const expandedId = ref<number | null>(null)
+const selectedUserId = ref<string>('')
 
 const stepLabels = ['Заявка создана', 'В обработке', 'Кандидат принят']
+
+const onSuccess = () => {
+  loadReferrals()
+  close()
+}
+
+const selectUser = (id: number) => {
+  selectedUserId.value = id.toString()
+  open()
+}
 
 onMounted(async () => {
   await loadReferrals()

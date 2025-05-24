@@ -1,12 +1,12 @@
 <template>
   <div class="tracking-view">
-    <tracking-hero />
+    <hello-section />
     <recommended-candidates />
   </div>
 </template>
 
 <script setup lang="ts">
-import TrackingHero from '@/widgets/tracking/hello-section/HelloSection.vue'
+import { HelloSection } from '@/widgets/tracking/hello-section/'
 import { RecommendedCandidates } from '@/widgets/tracking/recommended-candidates'
 </script>
 
